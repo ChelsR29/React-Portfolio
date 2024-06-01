@@ -1,5 +1,6 @@
 import Nav from './Navigation'
 import './Header.css'; 
+import Banner from '../assets/archispeak+website+banner+dark.png'
 
 const Header = () => {
   return (
@@ -7,7 +8,7 @@ const Header = () => {
        <h1>Chelsea R.</h1>
        <Nav />
        <img
-            src="src/assets/archispeak+website+banner+dark.png"
+            src= {Banner}
             alt="Banner"
             className="banner-image"
           />

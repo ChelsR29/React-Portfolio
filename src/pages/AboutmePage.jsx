@@ -1,4 +1,5 @@
 import './AboutmePage.css';
+import ProfilePic from '../assets/download.png'
 
 function AboutmePage() {
   return (
@@ -7,7 +8,7 @@ function AboutmePage() {
         <article id="about-me" className="about-me">
           <h2 className="section-title">About Me</h2>
           <img
-            src="src/assets/download.png"
+            src= {ProfilePic}
             alt="Profile"
             className="profile-pic"
           />
