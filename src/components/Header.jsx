@@ -7,7 +7,7 @@ const Header = () => {
        <h1>Chelsea R.</h1>
        <Nav />
        <img
-            src="src/assets/archispeak+website+banner+dark.jpg"
+            src="src/assets/archispeak+website+banner+dark.png"
             alt="Banner"
             className="banner-image"
           />

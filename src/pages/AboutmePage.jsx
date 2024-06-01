@@ -7,7 +7,7 @@ function AboutmePage() {
         <article id="about-me" className="about-me">
           <h2 className="section-title">About Me</h2>
           <img
-            src="src/assets/download.jpg"
+            src="src/assets/download.png"
             alt="Profile"
             className="profile-pic"
           />
