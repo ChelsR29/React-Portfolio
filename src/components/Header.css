@@ -1,4 +1,5 @@
 /* Header.css */
+
 .header {
   display: flex;
   align-items: center; /* Vertically center align */
@@ -9,11 +10,11 @@
 .header h1 {
   margin-right: auto; /* Adding some margin to separate the h1 from the Nav */
   margin-left: 20px;
+  margin-top: 28px;
   padding: 10px 20px; /* Padding shorthand for top/bottom and left/right */
   background-color: #f0f0f0; /* Light gray background */
   border-radius: 5px; /* Adding a slight border radius for a softer look */
   font-weight: bold; /* Making the text bold */
-
 }
 
 .banner-image {
@@ -21,4 +22,44 @@
   width: 100%; /* Adjust this as needed */
   z-index: -1; /* Places the image behind other content */
   margin-bottom: 55px;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 959px) {
+  .header {
+    display: flex;
+    align-items: center;     
+  }
+
+  .header h1 {
+    margin: 15px 0; /* Adjust margins for better spacing */
+    margin-left: 15px;
+    margin-right: auto;
+    padding: 10px; /* Adjust padding */
+    font-size: 1.8em; /* Adjust font size */
+  }
+
+  .banner-image {
+    margin-bottom: 30px; /* Adjust margin for better spacing */
+  }
+}
+
+/* Media Query for screens with max width of 700px */
+@media (max-width: 700px) {
+  .header {
+    display: flex;
+    align-items: center;  
+  }
+
+  .header h1 {
+    margin: 15px 0; /* Further adjust margins for better spacing */
+    margin-left: 10px;
+    margin-right: auto;
+    padding: 5px 10px; /* Further adjust padding */
+    font-size: 1.5em; /* Further adjust font size */
+  }
+
+  .banner-image {
+    margin-bottom: 20px; /* Further adjust margin for better spacing */
+  }
 }
