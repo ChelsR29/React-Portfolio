@@ -16,18 +16,18 @@ function Nav() {
       </li>
       <li className="nav-item">
         <Link
-          to="/contact"
-          className={currentPage === '/contact' ? 'nav-link active' : 'nav-link'}
-        >
-          Contact
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
           to="/portfolio"
           className={currentPage === '/portfolio' ? 'nav-link active' : 'nav-link'}
         >
           Portfolio
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/contact"
+          className={currentPage === '/contact' ? 'nav-link active' : 'nav-link'}
+        >
+          Contact
         </Link>
       </li>
       <li className="nav-item">

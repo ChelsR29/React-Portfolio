@@ -1,0 +1,64 @@
+.project {
+    position: relative;
+    width: 400pxt; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .project-details-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.727); /* Semi-transparent overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project:hover .project-details-container {
+    opacity: 1;
+  }
+  
+  .project-details {
+    text-align: center;
+    color: #fff;
+  }
+  
+  .project-link a, .repo-link a {
+    color: #000000;
+    opacity: 0.4;
+    text-decoration: none;
+  }
+  
+  .project-link a:hover, .repo-link a:hover {
+    opacity: 1;
+  }
+  
+  .project-link {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .repo-link {
+    font-size: 2rem; /* Increase the font size for a bigger icon */
+    margin-top: 20px;
+  }

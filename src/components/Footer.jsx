@@ -6,7 +6,7 @@ function Footer() {
     <footer className="bg-dark text-light text-center p-3">
       <div className="container">
         <p>Connect with me:</p>
-        <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" className="text-light mx-2">
+        <a href="https://github.com/ChelsR29" target="_blank" rel="noopener noreferrer" className="text-light mx-2">
           <FaGithub size={30} />
         </a>
         <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" className="text-light mx-2">

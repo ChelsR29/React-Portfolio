@@ -2,43 +2,49 @@
 
 import Project from '../components/Project';
 import './PortfolioPage.css'; // Import the CSS file
+import Project1 from '../assets/Project1.png'
+import Project2 from '../assets/Project2.png'
+import Project3 from '../assets/Project3.png'
+import Project4 from '../assets/Project4.png'
+import Project5 from '../assets/Project5.png';
+import Project6 from '../assets/project6.png';
 
 const projects = [
   {
-    title: 'Project 1',
-    deployLink: 'https://example.com/project1',
-    repoLink: 'https://github.com/username/project1',
-    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    title: 'Tech Blog',
+    deployLink: 'https://calm-scrubland-92937-dea32940f66f.herokuapp.com/',
+    repoLink: 'https://github.com/ChelsR29/Tech-Blog',
+    image: Project1, // Replace with actual image URL
   },
   {
-    title: 'Project 2',
-    deployLink: 'https://example.com/project2',
-    repoLink: 'https://github.com/username/project2',
-    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    title: 'Note Taker',
+    deployLink: 'https://frozen-peak-12428-63b0a52ed80b.herokuapp.com/',
+    repoLink: 'https://github.com/ChelsR29/Note-Taker',
+    image: Project2, // Replace with actual image URL
   },
   {
-    title: 'Project 3',
-    deployLink: 'https://example.com/project3',
-    repoLink: 'https://github.com/username/project3',
-    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    title: 'Weather Dashboard',
+    deployLink: 'https://chelsr29.github.io/Weather-Dashboard/',
+    repoLink: 'https://github.com/ChelsR29/Weather-Dashboard',
+    image: Project3, // Replace with actual image URL
   },
   {
-    title: 'Project 4',
-    deployLink: 'https://example.com/project4',
-    repoLink: 'https://github.com/username/project4',
-    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    title: 'Work Day Scheduler',
+    deployLink: 'https://chelsr29.github.io/Work-Day-Scheduler/',
+    repoLink: 'https://github.com/ChelsR29/Work-Day-Scheduler',
+    image: Project4, // Replace with actual image URL
   },
   {
-    title: 'Project 5',
-    deployLink: 'https://example.com/project5',
-    repoLink: 'https://github.com/username/project5',
-    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    title: 'Coding Quiz',
+    deployLink: 'https://chelsr29.github.io/Coding-Quiz/',
+    repoLink: 'https://github.com/ChelsR29/Coding-Quiz',
+    image: Project5, // Replace with actual image URL
   },
   {
-    title: 'Project 6',
-    deployLink: 'https://example.com/project6',
-    repoLink: 'https://github.com/username/project6',
-    image: 'https://via.placeholder.com/150', // Replace with actual image URL
+    title: 'Password Generator',
+    deployLink: 'https://chelsr29.github.io/password-generator/',
+    repoLink: 'https://github.com/ChelsR29/password-generator',
+    image: Project6, // Replace with actual image URL
   },
 ];
 

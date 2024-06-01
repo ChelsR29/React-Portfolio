@@ -8,7 +8,7 @@
 
 .header h1 {
   margin-right: auto; /* Adding some margin to separate the h1 from the Nav */
-  margin-left: 15px;
+  margin-left: 20px;
   padding: 10px 20px; /* Padding shorthand for top/bottom and left/right */
   background-color: #f0f0f0; /* Light gray background */
   border-radius: 5px; /* Adding a slight border radius for a softer look */
