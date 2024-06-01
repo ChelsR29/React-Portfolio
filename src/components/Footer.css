@@ -1,0 +1,19 @@
+/* Footer.css */
+
+footer {
+    width: 100%;
+    padding: 20px 0; /* Adjust padding as needed */
+    text-align: center;
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+footer .container {
+    justify-content: center;
+}
+
+footer .container p {
+    margin: 0;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+  

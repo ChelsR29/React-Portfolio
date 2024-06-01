@@ -1,0 +1,71 @@
+/* PortfolioPage.css */
+
+.portfolio-container {
+    padding: 20px;
+  }
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .project {
+    position: relative;
+    overflow: hidden; /* Prevent content from overflowing */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center; /* Align items horizontally */
+  }
+  
+  .project-image-container {
+    position: relative;
+  }
+  
+  .project-image {
+    width: 100%; /* Adjust as needed */
+    max-width: 300px; /* Adjust the maximum width of the images */
+    height: 300px;
+    display: block;
+    border-radius: 5px;
+  }
+  
+  .project-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+  }
+  
+  .project-info {
+    margin-left: 20px;
+    margin-right: 10px;
+    opacity: 0.5; /* Initial opacity */
+    transition: opacity 0.3s; /* Smooth transition */
+  }
+  
+  .project-info:hover {
+    opacity: 1; /* Full opacity on hover */
+    text-decoration: none; /* Remove underline on hover */
+  }
+  
+  .project-info a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+  }
+  
+  .project-details a:hover {
+    text-decoration: underline; /* Underline links in project details on hover */
+  }
+  
+  .project:hover .project-details {
+    visibility: visible;
+    opacity: 1;
+  }
+  

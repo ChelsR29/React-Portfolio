@@ -1,4 +1,7 @@
+// PortfolioPage.jsx
+
 import Project from '../components/Project';
+import './PortfolioPage.css'; // Import the CSS file
 
 const projects = [
   {
@@ -41,11 +44,11 @@ const projects = [
 
 function Portfolio() {
   return (
-    <div className="container">
-      <h2>Portfolio</h2>
-      <div className="row">
+    <div className="portfolio-container">
+      <h2 className="section-title">Portfolio</h2>
+      <div className="project-grid">
         {projects.map((project, index) => (
-          <div className="col-md-4" key={index}>
+          <div className="project-item" key={index}>
             <Project 
               title={project.title} 
               deployLink={project.deployLink} 

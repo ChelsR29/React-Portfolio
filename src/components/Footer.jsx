@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaStackOverflow } from 'react-icons/fa'; // Using react-icons for icons
+import './Footer.css';
 
 function Footer() {
   return (

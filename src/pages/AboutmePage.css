@@ -1,0 +1,29 @@
+.aboutme-container {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .content {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .profile-pic {
+    max-width: 125px; /* Adjust the size of the profile picture as needed */
+    border-radius: 50%; /* Make the profile picture round */
+    float: right;
+    /* display: block;
+    margin: 0 auto; */
+  }
+  
+  .about-me-text p {
+    font-size: 20px; /* Increase the font size of paragraphs */
+    line-height: 1.6; /* Improve readability with slightly increased line height */
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  

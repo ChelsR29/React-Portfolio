@@ -1,0 +1,44 @@
+.contact-container {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+
+  
+  .contact-content {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 400px;
+    border: 1px solid #757575; /* Add border style */
+    border-radius: 5px;
+    /* background-color: rgb(233, 233, 233); */
+  }
+  
+  .contact-form label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+  }
+  
+  .contact-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border-color: black;
+    border-width: thin;
+  }
+  

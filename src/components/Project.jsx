@@ -1,19 +1,18 @@
 function Project({ title, deployLink, repoLink, image }) {
   return (
-    <div className="card" style={{ width: '18rem', margin: '1rem' }}>
-      <img src={image} className="card-img-top" alt={title} />
-      <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <a href={deployLink} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-          View Deployed App
-        </a>
-        <a href={repoLink} className="btn btn-secondary" target="_blank" rel="noopener noreferrer" style={{ marginLeft: '0.5rem' }}>
-          View GitHub Repo
-        </a>
+    <div className="project">
+      <div className="project-image-container">
+        <img src={image} alt={title} className="project-image" />
+        <div className="project-details">
+          <h3 className="project-info">{title}</h3>
+          <p className="project-info">GitHub Repo: <a href={repoLink}>{repoLink}</a></p>
+          <p className="project-info">Deployed App: <a href={deployLink}>{deployLink}</a></p>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Project;
+
 

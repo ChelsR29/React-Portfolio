@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './ContactPage.css'; // Import the CSS file
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -28,9 +29,9 @@ function ContactPage() {
   };
 
   return (
-    <div className="container pt-4">
-      <h2>Contact</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="contact-container pt-4">
+      <h2 className="section-title">Contact</h2>
+      <form className="contact-content contact-form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
           <input

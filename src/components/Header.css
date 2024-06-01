@@ -1,0 +1,24 @@
+/* Header.css */
+.header {
+  display: flex;
+  align-items: center; /* Vertically center align */
+  margin: 0;
+  padding: 0;
+}
+
+.header h1 {
+  margin-right: auto; /* Adding some margin to separate the h1 from the Nav */
+  margin-left: 15px;
+  padding: 10px 20px; /* Padding shorthand for top/bottom and left/right */
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 5px; /* Adding a slight border radius for a softer look */
+  font-weight: bold; /* Making the text bold */
+
+}
+
+.banner-image {
+  position: absolute;
+  width: 100%; /* Adjust this as needed */
+  z-index: -1; /* Places the image behind other content */
+  margin-bottom: 55px;
+}
