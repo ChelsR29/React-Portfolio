@@ -1,34 +1,69 @@
 /* Header.css */
 
+/* Main Header Styles */
 .header {
   display: flex;
-  align-items: center; /* Vertically center align */
   margin: 0;
   padding: 0;
+  position: fixed; /* Keep the header fixed at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure the header stretches across the entire width */
+  z-index: 1000; /* Ensure the header is above other content */
 }
 
+/* Remove underline from the clickable h1 and style */
+.header-link {
+  text-decoration: none; /* Remove underline */
+}
+
+.header a {
+  margin-right: auto;
+}
+/* H1 Styles */
 .header h1 {
   margin-right: auto; /* Adding some margin to separate the h1 from the Nav */
-  margin-left: 20px;
-  margin-top: 28px;
-  padding: 10px 20px; /* Padding shorthand for top/bottom and left/right */
-  background-color: #f0f0f0; /* Light gray background */
-  border-radius: 5px; /* Adding a slight border radius for a softer look */
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px; /* Ensure padding is equal on all sides */
+  color: #282C2D;
+  background-color: #C4D1C2; /* Light gray background */
+  border-radius: 50%; /* Makes the h1 container circular */
   font-weight: bold; /* Making the text bold */
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Set a fixed height */
+  width: 60px; /* Set a fixed width equal to height */
+  text-align: center; /* Center the text inside the circle */
+  transition: background-color 0.3s ease; /* Optional hover effect */
 }
 
-.banner-image {
-  position: absolute;
-  width: 100%; /* Adjust this as needed */
-  z-index: -1; /* Places the image behind other content */
-  margin-bottom: 55px;
+.header h1:hover {
+  background-color: #B0C2AE; /* Optional hover effect to change the background color */
+}
+
+/* Ensure that the body content doesn't hide behind the header */
+body {
+  padding-top: 80px; /* Adjust this value to match the height of your header */
+}
+
+body.dark-mode .header h1 {
+  color: #f1efe8;
+  background-color: #708F83;
+}
+
+body.dark-mode .header h1:hover {
+  background-color: #85aa9c;
 }
 
 /* Media Query for smaller screens */
 @media (max-width: 959px) {
   .header {
     display: flex;
-    align-items: center;     
+    align-items: center;
   }
 
   .header h1 {
@@ -38,17 +73,13 @@
     padding: 10px; /* Adjust padding */
     font-size: 1.8em; /* Adjust font size */
   }
-
-  .banner-image {
-    margin-bottom: 30px; /* Adjust margin for better spacing */
-  }
 }
 
 /* Media Query for screens with max width of 700px */
 @media (max-width: 700px) {
   .header {
     display: flex;
-    align-items: center;  
+    align-items: center;
   }
 
   .header h1 {
@@ -57,9 +88,5 @@
     margin-right: auto;
     padding: 5px 10px; /* Further adjust padding */
     font-size: 1.5em; /* Further adjust font size */
-  }
-
-  .banner-image {
-    margin-bottom: 20px; /* Further adjust margin for better spacing */
   }
 }
