@@ -1,28 +1,130 @@
-.nav {
-  list-style: none;
+/* Container for both buttons */
+.nav-buttons {
+  position: fixed;
+  top: 15px;
+  right: 15px;
   display: flex;
-  gap: 20px; /* Space between nav items */
-  margin: 0;
+  align-items: center;
+  z-index: 1001; /* Lower z-index to ensure it's behind the overlay */
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
+  z-index: 1001; /* Same z-index as the nav-buttons */
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #282C2D;
+  border-radius: 10px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* Same z-index as hamburger and nav-buttons */
+  height: 58px;
+  font-size: 20px;
+}
+
+.theme-toggle-btn:hover {
+  color: #555;
+}
+
+/* Full Screen Overlay */
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(193, 154, 107, 0.92) ;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100; /* Higher z-index to ensure it is on top of the nav buttons */
+  transition: 0.5s ease;
+}
+
+.overlay.open {
+  display: flex;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  list-style-type: none;
   padding: 0;
-  margin-right: 15px;
+  text-align: center;
 }
 
-/* Styles for the navigation links */
+.nav-item {
+  margin: 20px 0;
+}
+
 .nav-link {
+  font-size: 24px;
+  color: #FFFFF0;
   text-decoration: none;
-  color: #ffffff; /* Default color for nav links */
-  padding: 8px 12px;
-  border-radius: 4px;
+  transition: color 0.3s ease;
 }
 
-.nav-link.active {
-  background-color: #007bff; /* Background color for active nav link */
-  color: #fff; /* Text color for active nav link */
+.nav-link:hover {
+  color: #f0f0f0;
 }
 
-@media (max-width: 700px) {
-  /* Styles for the navigation links */
-  .nav-link {
-    font-size: small;
-  }
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  font-size: 36px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #f0f0f0;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #2A2A2A;
+  color: #FAF9F6;
+}
+
+body.dark-mode .nav-link {
+  color: #FAF9F6;
+}
+
+body.dark-mode .theme-toggle-btn {
+  color: #FAF9F6;
+}
+
+body.dark-mode .hamburger .bar {
+  background-color: #FAF9F6;
+}
+/* Light Mode Styles (Default) */
+body {
+  background-color: #f1efe8;
+  color: #282C2D;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
