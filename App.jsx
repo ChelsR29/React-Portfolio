@@ -4,16 +4,20 @@ import AboutmePage from './src/pages/AboutmePage';
 import ContactPage from './src/pages/ContactPage';
 import PortfolioPage from './src/pages/PortfolioPage';
 import ResumePage from './src/pages/ResumePage';
+import Homepage from './src/pages/Homepage';
 
 function App() {
   return (
     <>
       <Header />
+      <div id="homepage">
+        <Homepage />
+      </div>
+      <div id="projects">
+        <PortfolioPage />
+      </div>
       <div id="aboutme">
         <AboutmePage />
-      </div>
-      <div id="portfolio">
-        <PortfolioPage />
       </div>
       <div id="contact">
         <ContactPage />
