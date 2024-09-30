@@ -1,0 +1,114 @@
+/* Styles for the hero section */
+
+div.homepage {
+    height: 100vh;
+}
+
+#hero {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 550px;
+    padding: 0 200px;
+    font-family: 'Arial', sans-serif;
+    flex-direction: row-reverse;
+    position: relative; /* Allows absolute positioning of the scroll-arrow */
+}
+
+#hero div:first-child {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+#hero div:last-child {
+    flex: 2;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #282C2D;
+    margin-bottom: 5px;
+}
+
+body.dark-mode h1 {
+    color: #FAF0E6;
+}
+
+h2 {
+    font-size: 24px;
+    color: #3e4446;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+body.dark-mode h2 {
+    color: #dcd4cb;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #606a6c;
+}
+
+body.dark-mode p {
+    color: #c9c2ba;
+}
+
+/* Scroll Arrow */
+.scroll-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    color: inherit;
+
+}
+
+/* Bounce animation for the scroll arrow */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+   
+  @media (max-width: 768px) {
+    #hero {
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+    }
+  
+    h1, h2 {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: 1.2rem;
+    }
+  
+    #hero img {
+      width: 200px;
+      height: 200px;
+    }
+  } 
