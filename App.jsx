@@ -13,7 +13,7 @@ function App() {
       <div id="homepage">
         <Homepage />
       </div>
-      <div id="projects">
+      <div id="projects" style={{ height: '100vh' }}>
         <PortfolioPage />
       </div>
       <div id="aboutme">
