@@ -40,14 +40,14 @@ function Nav() {
       <div className={`overlay ${isOpen ? 'open' : ''}`}>
         <button className="close-btn" onClick={toggleMenu}>&times;</button>
         <ul className="nav-menu">
-          <li className="nav-item">
-            <a href="#aboutme" className="nav-link" onClick={toggleMenu}>
-              About Me
+        <li className="nav-item">
+            <a href="#projects" className="nav-link" onClick={toggleMenu}>
+              Projects
             </a>
           </li>
           <li className="nav-item">
-            <a href="#portfolio" className="nav-link" onClick={toggleMenu}>
-              Portfolio
+            <a href="#aboutme" className="nav-link" onClick={toggleMenu}>
+              About Me
             </a>
           </li>
           <li className="nav-item">
