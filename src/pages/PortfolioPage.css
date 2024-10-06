@@ -4,6 +4,7 @@
   padding: 20px;
   padding-top: 150px;
   height: 100vh;
+  position: relative;
 }
 
 .section-title {
@@ -42,6 +43,7 @@
   animation: fadeInScale 2s ease-in-out;
 }
 
+
 /* Keyframes for the text animation */
 @keyframes fadeInScale {
   0% {
@@ -56,4 +58,18 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.scroll-arrow-portfolio {
+  position: absolute;
+  bottom: 200px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Keep centered */
+  font-size: 2rem;
+  cursor: pointer;
+  /* No animation, so the arrow is static */
+}
+
+body.dark-mode .scroll-arrow-portfolio {
+  color: #FAF9F6;
 }
