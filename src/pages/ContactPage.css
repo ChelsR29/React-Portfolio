@@ -1,44 +1,126 @@
 .contact-container {
-    padding-top: 20px;
-    padding-bottom: 10px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 200px;
+  padding-left: 250px;
+  padding-right: 250px;
+  height: 100vh;
+}
+
+/* Left side (resume & message) */
+.contact-left {
+  flex: 1;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Align content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center text within the container */
+}
+
+.contact-left h2.section-title {
+  font-size: 2rem;
+  margin-top: 0px;
+}
+
+.contact-left p {
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  max-width: 400px;
+  font-size: 18px;
+}
+
+.contact-left a {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #C19A6B;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for smooth scaling */
+  align-self: center; /* Center the button horizontally */
+  margin-top: 20px;
+}
+
+.contact-left a:hover {
+  background-color: #a68051; /* Optional: Change the background color on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
 
 
-  
-  .contact-content {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 400px;
-    border: 1px solid #757575; /* Add border style */
-    border-radius: 5px;
-    /* background-color: rgb(233, 233, 233); */
+
+/* .social-icons a {
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a svg {
+  width: 30px;
+}
+
+.social-icons a:hover {
+  color: #ff4747; Darker hover effect 
+} */
+
+/* Right side (Form) */
+.contact-right {
+  flex: 1;
+  padding-left: 50px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form .form-control {
+  width: 100%; /* Ensures all inputs and textarea take up the full width */
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: 1px solid #b3b3b3; /* Light pink border */
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+
+.contact-form textarea {
+  resize: none; /* Disable resize */
+}
+
+.contact-form .btn {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #C19A6B;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+ 
+.contact-form .btn:hover {
+  background-color: #a68051; /* Optional: Change the background color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
   }
-  
-  .contact-form label {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+
+  .contact-left, .contact-right {
+    padding: 0;
+    text-align: center;
   }
-  
-  .contact-form input[type="text"],
-  .contact-form input[type="email"],
-  .contact-form textarea {
-    width: 100%;
-    font-size: 16px;
-    margin-bottom: 10px;
+
+  .social-icons a {
+    margin-right: 10px;
+    margin-left: 10px;
   }
-  
-  .contact-form textarea {
-    resize: vertical;
-  }
-  
-  .contact-form button {
-    padding: 10px 20px;
-    font-size: 16px;
-    display: block;
-    margin: 0 auto;
-    /* background-color: #f0f0f0; */
-    border-radius: 5px;
-    border-color: black;
-    border-width: thin;
-  }
-  
+}
