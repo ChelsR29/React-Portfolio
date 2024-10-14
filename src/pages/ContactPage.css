@@ -1,11 +1,14 @@
 .contact-container {
+  height: 100vh;
+}
+
+.contact-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 200px;
   padding-left: 250px;
   padding-right: 250px;
-  height: 100vh;
 }
 
 /* Left side (resume & message) */
@@ -52,20 +55,6 @@
 }
 
 
-
-/* .social-icons a {
-  margin-right: 15px;
-  transition: color 0.3s ease;
-}
-
-.social-icons a svg {
-  width: 30px;
-}
-
-.social-icons a:hover {
-  color: #ff4747; Darker hover effect 
-} */
-
 /* Right side (Form) */
 .contact-right {
   flex: 1;
@@ -107,6 +96,21 @@
 .contact-form .btn:hover {
   background-color: #a68051; /* Optional: Change the background color on hover */
 }
+
+.response-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: green; /* Adjust the color */
+  opacity: 1;
+  transition: opacity 1s ease; /* Smooth fade-out over 1 second */
+}
+
+.response-message.fade-out {
+  opacity: 0; /* Fade out by setting opacity to 0 */
+}
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

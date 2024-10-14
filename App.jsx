@@ -1,9 +1,7 @@
 import Header from './src/components/Header';
-import Footer from './src/components/Footer';
 import AboutmePage from './src/pages/AboutmePage';
 import ContactPage from './src/pages/ContactPage';
 import PortfolioPage from './src/pages/PortfolioPage';
-import ResumePage from './src/pages/ResumePage';
 import Homepage from './src/pages/Homepage';
 
 function App() {
@@ -22,10 +20,6 @@ function App() {
       <div id="contact">
         <ContactPage />
       </div>
-      <div id="resume">
-        <ResumePage />
-      </div>
-      <Footer />
     </>
   );
 }

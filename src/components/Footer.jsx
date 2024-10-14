@@ -3,17 +3,17 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <footer className="bg-dark text-light text-center p-3">
+    <footer className="bg-dark text-light text-center">
       <div className="container">
-        <p>Connect with me:</p>
+        <p>Social Links:</p>
         <a href="https://github.com/ChelsR29" target="_blank" rel="noopener noreferrer" className="text-light mx-2">
-          <FaGithub size={30} />
+          <FaGithub size={25} />
         </a>
         <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" className="text-light mx-2">
-          <FaLinkedin size={30} />
+          <FaLinkedin size={25} />
         </a>
         <a href="https://stackoverflow.com/users/your-stackoverflow-id" target="_blank" rel="noopener noreferrer" className="text-light mx-2">
-          <FaStackOverflow size={30} />
+          <FaStackOverflow size={25} />
         </a>
       </div>
     </footer>

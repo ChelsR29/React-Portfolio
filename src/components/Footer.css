@@ -2,9 +2,8 @@
 
 footer {
     width: 100%;
-    padding: 20px 0; /* Adjust padding as needed */
     text-align: center;
-    margin-top: 20px; /* Adjust margin-top as needed */
+    margin-bottom: 20px;
 }
 
 footer .container {
@@ -16,4 +15,17 @@ footer .container p {
     margin-bottom: 10px; /* Adjust as needed */
 }
 
-  
+footer .container a {
+    padding-left: 10px;
+    padding-right: 10px;
+    /* transition: color 0.3s ease; */
+}
+
+footer .container a svg:hover {
+    color: #8c9a3d;
+    transform: scale(1.10);
+}
+
+footer .container a svg {
+    color: #4B5320;
+}

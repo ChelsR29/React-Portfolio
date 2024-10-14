@@ -1,7 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react';
-import './ContactPage.css'; // Import the CSS file
-// import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa'; // Icons for social media
+import './ContactPage.css'; 
+import resume from '../assets/files/Resume.pdf';
+import Footer from '../components/Footer'
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -10,14 +10,16 @@ function ContactPage() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [fadeOut, setFadeOut] = useState(false); // New state for fading out
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
-
-    // Clear custom validation message
     e.target.setCustomValidity('');
   };
 
@@ -31,94 +33,112 @@ function ContactPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.target;
-    if (!form.checkValidity()) {
-      // If the form is invalid, trigger the browser's HTML5 validation UI
-      form.reportValidity();
-      return;
-    }
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-    // Reset form fields
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
+    setIsSubmitting(true);
+
+    const response = await fetch('http://localhost:3001/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      }),
     });
+
+    if (response.ok) {
+      setResponseMessage('Your message was sent successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+    } else {
+      setResponseMessage('Failed to send your message. Please try again.');
+    }
+
+    // Set fadeOut to false when showing the message, and then start fading out
+    setFadeOut(false);
+    setTimeout(() => {
+      setFadeOut(true); // Start fade-out after 3 seconds
+      setTimeout(() => {
+        setResponseMessage(''); // Remove message after fade-out
+      }, 1000); // Match the fade-out duration in CSS
+    }, 3000); // Display message for 3 seconds
+
+    setIsSubmitting(false);
   };
 
   return (
     <div className="contact-container">
-      <div className="contact-left">
-        <h2 className="section-title">Send me a Message!</h2>
-        <p>
-        Whether you want to collaborate on a project or just talk about 
-        similar interests, I’m always open to connect. Feel free to reach out!
-        </p>
-        <a href="/path/to/your/resume.pdf" download>Download Resume</a>
-        {/* <div className="social-icons">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin size={40} />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FaTwitter size={40} />
-          </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-            <FaGithub size={40} />
-          </a>
-        </div> */}
+      <div className="contact-section">
+        <div className="contact-left">
+          <h2 className="section-title">Send me a Message!</h2>
+          <p>
+            Whether you want to collaborate on a project or just talk about 
+            similar interests, I’m always open to connect. Feel free to reach out!
+          </p>
+          <a href={resume} download='Chelsea_Ramdat_Resume'>Download Resume</a>
+        </div>
+        <div className="contact-right">
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                placeholder="name"
+                value={formData.name}
+                onChange={handleChange}
+                onInvalid={handleInvalid}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="email"
+                value={formData.email}
+                onChange={handleChange}
+                onInvalid={handleInvalid}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <textarea
+                className="form-control"
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="message"
+                value={formData.message}
+                onChange={handleChange}
+                onInvalid={handleInvalid}
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+            {responseMessage && (
+              <p className={`response-message ${fadeOut ? 'fade-out' : ''}`}>
+                {responseMessage}
+              </p>
+            )}
+          </form>
+        </div>
       </div>
-      <div className="contact-right">
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
-          <div className="mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              placeholder="name"
-              value={formData.name}
-              onChange={handleChange}
-              onInvalid={handleInvalid}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              placeholder="email"
-              value={formData.email}
-              onChange={handleChange}
-              onInvalid={handleInvalid}
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <textarea
-              className="form-control"
-              id="message"
-              name="message"
-              rows="4"
-              placeholder="message"
-              value={formData.message}
-              onChange={handleChange}
-              onInvalid={handleInvalid}
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className="btn">Send Message</button>
-        </form>
-      </div>
+      <Footer />
     </div>
+
   );
 }
 
 export default ContactPage;
-
-
