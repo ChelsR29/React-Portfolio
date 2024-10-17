@@ -55,11 +55,6 @@ function Nav() {
               Contact
             </a>
           </li>
-          <li className="nav-item">
-            <a href="#resume" className="nav-link" onClick={toggleMenu}>
-              Resume
-            </a>
-          </li>
         </ul>
       </div>
     </>
