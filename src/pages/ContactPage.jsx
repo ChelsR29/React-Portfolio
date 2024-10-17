@@ -20,46 +20,83 @@ function ContactPage() {
       ...formData,
       [name]: value
     });
-    e.target.setCustomValidity('');
+    e.target.setCustomValidity(''); // Reset the custom validity
   };
-
+  
   const handleInvalid = (e) => {
     if (e.target.validity.valueMissing) {
       e.target.setCustomValidity('This field is required');
-    } else if (e.target.type === 'email' && e.target.validity.patternMismatch) {
+    } else if (e.target.type === 'email' && e.target.validity.typeMismatch) {
       e.target.setCustomValidity('Please enter a valid email address');
     } else {
       e.target.setCustomValidity('');
     }
   };
-
+  
+  // Function to validate email format using regular expression
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    const response = await fetch('http://localhost:3001/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      }),
-    });
-
-    if (response.ok) {
-      setResponseMessage('Your message was sent successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-    } else {
-      setResponseMessage('Failed to send your message. Please try again.');
+  
+    // Check if any fields are empty
+    if (!formData.name || !formData.email || !formData.message) {
+      setResponseMessage('Please fill in all fields before sending.');
+      setFadeOut(false); // Ensure message is shown immediately
+      setTimeout(() => {
+        setFadeOut(true); // Start fade-out after 3 seconds
+        setTimeout(() => {
+          setResponseMessage(''); // Remove message after fade-out
+        }, 1000); // Match the fade-out duration in CSS
+      }, 3000); // Display message for 3 seconds
+      return; // Stop form submission
     }
-
+  
+    // Validate the email format
+    if (!isValidEmail(formData.email)) {
+      setResponseMessage('Please enter a valid email address.');
+      setFadeOut(false); // Ensure message is shown immediately
+      setTimeout(() => {
+        setFadeOut(true); // Start fade-out after 3 seconds
+        setTimeout(() => {
+          setResponseMessage(''); // Remove message after fade-out
+        }, 1000); // Match the fade-out duration in CSS
+      }, 3000); // Display message for 3 seconds
+      return; // Stop form submission
+    }
+  
+    setIsSubmitting(true);
+  
+    try {
+      const response = await fetch('http://localhost:3001/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+  
+      if (response.ok) {
+        setResponseMessage('Your message was sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        setResponseMessage('Failed to send your message. Please try again.');
+      }
+    } catch (error) {
+      setResponseMessage('An error occurred. Please try again later.');
+    }
+  
     // Set fadeOut to false when showing the message, and then start fading out
     setFadeOut(false);
     setTimeout(() => {
@@ -68,18 +105,18 @@ function ContactPage() {
         setResponseMessage(''); // Remove message after fade-out
       }, 1000); // Match the fade-out duration in CSS
     }, 3000); // Display message for 3 seconds
-
+  
     setIsSubmitting(false);
-  };
+  };   
 
   return (
-    <div className="contact-container">
-      <div className="contact-section">
+    <div className="contact-section-container">
+      <div className="contact-container">
         <div className="contact-left">
           <h2 className="section-title">Send me a Message!</h2>
           <p>
-            Whether you want to collaborate on a project or just talk about 
-            similar interests, I’m always open to connect. Feel free to reach out!
+            Like what you see? Want to collaborate on a project or just talk about 
+            similar interests? I’m always open to connect. Feel free to reach out!
           </p>
           <a href={resume} download='Chelsea_Ramdat_Resume'>Download Resume</a>
         </div>
@@ -137,8 +174,8 @@ function ContactPage() {
       </div>
       <Footer />
     </div>
-
   );
+  
 }
 
 export default ContactPage;

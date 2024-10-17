@@ -3,7 +3,6 @@
 footer {
     width: 100%;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 footer .container {
@@ -16,16 +15,25 @@ footer .container p {
 }
 
 footer .container a {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
     /* transition: color 0.3s ease; */
 }
+
+footer .container a svg {
+    color: #4B5320;
+}
+
+body.dark-mode footer .container a svg {
+    color: #748C6D;
+}
+
 
 footer .container a svg:hover {
     color: #8c9a3d;
     transform: scale(1.10);
 }
 
-footer .container a svg {
-    color: #4B5320;
+body.dark-mode footer .container a svg:hover {
+    color: #8FA68B;
 }

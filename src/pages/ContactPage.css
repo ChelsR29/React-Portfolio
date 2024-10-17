@@ -1,15 +1,24 @@
-.contact-container {
-  height: 100vh;
+.contact-section-container {
+  display: flex;
+  flex-direction: column; /* Make sure the footer comes below */
+  min-height: 100vh; /* Ensure the entire content is at least the height of the viewport */
 }
 
-.contact-section {
+.contact-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 200px;
+  padding-top: 200px;
   padding-left: 250px;
   padding-right: 250px;
+  margin-bottom: 30px; /* Add some space below the contact section */
 }
+
+footer {
+  margin-top: auto; /* Pushes footer to the bottom */
+  margin-bottom: 20px;
+}
+
 
 /* Left side (resume & message) */
 .contact-left {
@@ -28,11 +37,12 @@
 }
 
 .contact-left p {
+  font-family: Verdana;
   line-height: 1.6;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   max-width: 400px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .contact-left a {
@@ -54,6 +64,13 @@
   transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
 
+body.dark-mode .contact-left a {
+  background-color: #a18059;
+}
+
+body.dark-mode .contact-left a:hover {
+  background-color: #795935;
+}
 
 /* Right side (Form) */
 .contact-right {
@@ -94,13 +111,22 @@
 
  
 .contact-form .btn:hover {
-  background-color: #a68051; /* Optional: Change the background color on hover */
+  background-color: #a68051; 
+}
+
+body.dark-mode .contact-form .btn {
+  background-color: #a18059;
+}
+
+body.dark-mode .contact-form .btn:hover {
+  background-color: #795935;
 }
 
 .response-message {
   text-align: center;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 15px;
+  font-family: Verdana;
   color: green; /* Adjust the color */
   opacity: 1;
   transition: opacity 1s ease; /* Smooth fade-out over 1 second */
@@ -110,6 +136,9 @@
   opacity: 0; /* Fade out by setting opacity to 0 */
 }
 
+body.dark-mode .response-message {
+  color: #fae4db;
+}
 
 
 /* Responsive adjustments */
