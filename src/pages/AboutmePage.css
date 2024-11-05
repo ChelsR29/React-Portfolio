@@ -148,25 +148,87 @@ body.dark-mode .scroll-arrow-about {
   color: #FAF9F6;
 }
 
-/* Responsive for smaller screens */
-/* @media (max-width: 768px) {
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .aboutme-container {
+    max-width: 768px;
+    padding: 30px;
+  }
+  .about-me {
+    padding-top: 75px;
+  }
+
   .about-me-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 50px; /* Reduce gap for smaller screens */
+    margin-top: 30px;
   }
 
   .profile-pic {
-    width: 200px;
-    height: 200px;
-    margin-top: 20px;
+    width: 250px; /* Reduce size for tablets */
+    height: 250px;
   }
 
-  .about-me-text {
-    text-align: center;
+  .indented-paragraph {
+    font-size: 1rem; /* Adjust font size */
+    padding: 15px; /* Adjust padding */
+    width: auto;
   }
 
   .skills-list {
-    justify-content: center;
+    gap: 8px; /* Reduce gap between badges */
   }
-} */
+}
+
+@media (max-width: 480px) {
+  .about-me {
+    padding-top: 15px;
+  }
+
+  .section-title {
+    font-size: 2rem; /* Reduce font size for smaller screens */
+  }
+
+  .about-me-content {
+    gap: 10px; /* Further reduce gap for mobile */
+    flex-direction: column-reverse;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .profile-pic {
+    width: 125px; /* Further reduce size for mobile */
+    height: 125px;
+  }
+
+  .indented-paragraph {
+    font-size: 0.85rem; /* Further reduce font size */
+    font-weight: bold;
+    padding: 10px 15px; /* Adjust padding */
+    line-height: 1.8;
+  }
+
+
+  .skills-section h3.section-title {
+    font-size: 1.4rem; /* Adjust section title size */
+    letter-spacing: 2px;
+    margin-top: 0px;
+  }
+
+  .skills-list {
+    gap: 8px; /* Further reduce gap between badges */
+    margin-top: 10px;
+  }
+
+  .skill-badge {
+    padding: 10px 5px;
+  }
+
+  .scroll-arrow-about {
+    bottom: 50px; /* Adjust arrow position for mobile */
+    font-size: 1.5rem; /* Reduce arrow size for mobile */
+    padding-bottom: 30px;
+  }
+}

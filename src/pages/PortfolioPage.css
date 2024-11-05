@@ -73,3 +73,58 @@
 body.dark-mode .scroll-arrow-portfolio {
   color: #FAF9F6;
 }
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+  .portfolio-container {
+    max-width: 768px;
+    padding-top: 100px;
+  }
+
+  .section-title {
+    font-size: 2rem; /* Adjust the font size for smaller screens */
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the min width of the grid items */
+    gap: 20px; /* Reduce the gap between grid items */
+  }
+
+  .hover-info {
+    font-size: 14px; /* Adjust hover text size for smaller screens */
+    margin-bottom: 40px;
+  }
+
+  .scroll-arrow-portfolio {
+    bottom: 150px; /* Adjust position for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-container {
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem; /* Further reduce the font size for small screens */
+    margin-top: 10px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr; /* Make the projects stack in one column */
+    gap: 20px; /* Further reduce the gap between grid items */
+  }
+
+  .hover-info {
+    font-size: 12px; /* Further adjust hover text size for mobile screens */
+    margin-bottom: 25px;
+  }
+
+  .scroll-arrow-portfolio {
+    bottom: 100px; /* Adjust position for mobile screens */
+    font-size: 1.5rem; /* Reduce the arrow size for mobile */
+    padding-bottom: 20px;
+  }
+}
