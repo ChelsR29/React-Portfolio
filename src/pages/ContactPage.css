@@ -157,3 +157,66 @@ body.dark-mode .response-message {
     margin-left: 10px;
   }
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 50px; /* Adjust padding for smaller screens */
+    padding-right: 50px;
+    padding-top: 210px;
+    gap: 50px;
+  }
+
+  .contact-left, .contact-right {
+    padding: 0;
+    text-align: center; /* Center text and form on smaller screens */
+  }
+
+  .contact-right {
+    width: 450px;
+  }
+
+  .contact-left a {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    flex-direction: column;
+    padding-left: 20px; /* Further reduce padding for mobile */
+    padding-right: 20px;
+    padding-top: 180px;
+    gap: 40px;
+  }
+
+  .contact-left p {
+    font-size: 14px;
+    max-width: 300px; /* Adjust max width for mobile */
+  }
+
+  .contact-left a {
+    font-size: 0.9rem;
+    padding: 8px 15px; /* Reduce button padding for mobile */
+  }
+
+  .contact-right {
+    width: 325px;
+  }
+
+  .contact-form .form-control {
+    font-size: 0.9rem;
+    padding: 8px; /* Reduce padding for inputs and textarea */
+  }
+
+  .contact-form .btn {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .response-message {
+    font-size: 14px; /* Reduce font size for response messages */
+  }
+}

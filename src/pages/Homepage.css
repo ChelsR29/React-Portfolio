@@ -1,10 +1,13 @@
 /* Styles for the hero section */
 
-div.homepage {
+#homepage {
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 #hero {
+    max-width: 950px;
     display: flex;
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */
@@ -27,6 +30,7 @@ div.homepage {
     height: 300px;
     border-radius: 50%;
     padding: 0;
+    margin-left: 40px;
 }
 
 #hero div:last-child {
@@ -92,23 +96,66 @@ body.dark-mode p {
 }
 
    
-  @media (max-width: 768px) {
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
     #hero {
-      flex-direction: column;
-      padding: 20px;
-      text-align: center;
+        flex-direction: column; /* Stack elements vertically */
+        padding: 0 20px;
+        padding-top: 50px;
+        height: auto;
+        margin: 0 auto; /* Ensure centering on smaller screens */
     }
-  
-    h1, h2 {
-      font-size: 2rem;
-    }
-  
-    p {
-      font-size: 1.2rem;
-    }
-  
+
     #hero img {
-      width: 200px;
-      height: 200px;
+        width: 200px;
+        height: 200px;
+        margin-left: 0px;
     }
-  } 
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .scroll-arrow {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero {
+        padding-top: 80px;
+       
+    }
+
+    #hero img {
+        width: 150px;
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .scroll-arrow {
+        font-size: 1.2rem;
+    }
+}
