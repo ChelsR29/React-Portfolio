@@ -1,36 +1,39 @@
 // Import necessary modules
 import express from 'express';
-import cors from 'cors'; 
+import cors from 'cors';
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import path from 'path';
 
-// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: 'https://https://chelsea-react-portfolio.netlify.app/',
+  origin: 'https://chelsea-react-portfolio.netlify.app', // Corrected the URL
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 
-app.use(express.json()); // To parse JSON request body
+// To parse JSON request body
+app.use(express.json());
 
-// Create OAuth2 client
-const oAuth2Client = new google.auth.OAuth2(
-  process.env.CLIENT_ID,
-  process.env.CLIENT_SECRET,
-  process.env.REDIRECT_URI
-);
-oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+// Serve static files from the React build folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
   try {
     const { name, email, message } = req.body; // Get data from the contact form
+
+    const oAuth2Client = new google.auth.OAuth2(
+      process.env.CLIENT_ID,
+      process.env.CLIENT_SECRET,
+      process.env.REDIRECT_URI
+    );
+    oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
     const accessToken = await oAuth2Client.getAccessToken();
 
@@ -53,8 +56,6 @@ app.post('/send-email', async (req, res) => {
       text: `You received a message from ${name} (${email}):\n\n${message}`, // The email content
       replyTo: email, // This ensures replies go to the user
     };
-      
-      
 
     const result = await transporter.sendMail(mailOptions);
     console.log(result);
@@ -66,10 +67,13 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+// Default route to serve the frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Start the server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
