@@ -18,7 +18,7 @@ const app = express();
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: 'https://chelsea-react-portfolio.netlify.app', // Corrected the URL
+  origin: 'https://chelsea-react-portfolio.netlify.app', // Your frontend URL
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -26,8 +26,8 @@ app.use(cors(corsOptions));
 // To parse JSON request body
 app.use(express.json());
 
-// Serve static files from the public folder in the root directory
-app.use(express.static(path.join(__dirname, '../public')));
+// Serve static files from the root directory
+app.use(express.static(path.join(__dirname, '../'))); // Serve files from the app folder
 
 // POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
@@ -75,7 +75,7 @@ app.post('/send-email', async (req, res) => {
 
 // Default route to serve the frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../index.html')); // Adjusted to locate index.html in the root directory
 });
 
 // Start the server
@@ -83,4 +83,5 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
