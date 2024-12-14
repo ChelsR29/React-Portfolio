@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --config ./config/vite.config.js",
-    "start": "vite",
-    "build": "vite build --config ./config/vite.config.js",
+    "start": "node config/server.js",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview --config ./config/vite.config.js",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
