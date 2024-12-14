@@ -11,7 +11,11 @@ dotenv.config();
 const app = express();
 
 // Enable CORS for all routes
-app.use(cors()); // Add CORS middleware
+const corsOptions = {
+  origin: 'https://https://chelsea-react-portfolio.netlify.app/',
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 app.use(express.json()); // To parse JSON request body
 

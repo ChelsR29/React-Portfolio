@@ -71,7 +71,7 @@ function ContactPage() {
     setIsSubmitting(true);
   
     try {
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('https://chelsearamdat-portfolio-2bb4cb1364f1.herokuapp.com/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function ContactPage() {
           email: formData.email,
           message: formData.message,
         }),
-      });
+      });      
   
       if (response.ok) {
         setResponseMessage('Your message was sent successfully!');
