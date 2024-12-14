@@ -5,7 +5,13 @@ import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
+// Fix for `__dirname` in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
