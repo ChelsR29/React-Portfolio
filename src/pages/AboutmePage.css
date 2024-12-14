@@ -1,29 +1,234 @@
+/* General About Me Styles */
 .aboutme-container {
-    padding-top: 20px;
-    padding-bottom: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 40px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Ensure the scroll indicator is relative to this section */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: lighter;
+  font-family: 'Arial';
+  color: #282C2D;
+}
+
+/* Flexbox layout for text and image */
+.about-me-content {
+  margin-top: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px; /* Space between text and image */
+}
+
+.about-me-text {
+  flex: 1; /* Makes the paragraph take up 50% of the width */
+}
+
+.indented-paragraph {
+  text-indent: 20px;
+  font-size: 1.2rem;
+  line-height: 2;
+  text-align: left;
+  background-color: #e0b0b0ad;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  display: block; /* Ensures it takes up the full width */
+  width: 100%; /* Makes sure the element spans the entire width */
+  text-align: justify; /* Distributes the text evenly across the line */
+}
+
+body.dark-mode .indented-paragraph {
+  color: #F5F5F5;
+}
+
+.profile-pic {
+  width: 325px; /* Set a fixed or max width */
+  height: 325px; /* Set a fixed or max height */
+  border-radius: 50%; /* Makes it circular if it's a square image */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  object-position: center; /* Centers the image within the frame */
+}
+
+/* Centered Skills Section */
+.skills-section {
+  text-align: center;
+}
+
+h3.section-title {
+  font-size: 28px;
+  font-family: 'Arial';
+  font-weight: lighter;
+  margin-top: 15px;
+  letter-spacing: 3px;
+}
+
+body.dark-mode h3.section-title {
+  color: #FAF9F6;
+}
+
+/* Flexbox for skills */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* More spacing between the badges */
+  margin-top: 20px;
+}
+
+/* General skill badge styling */
+.skill-badge {
+  padding: 15px 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: #fff;
+  transition: transform 0.3s ease;
+  flex: 1 1 100px; /* Adjusts size to allow badges to wrap and be evenly spaced */
+  text-align: center;
+}
+
+/* Frontend Skills */
+.frontend {
+  background-color: rgba(106, 127, 173, 0.902) ; /* Blue for Frontend */
+}
+
+/* Backend Skills */
+.backend {
+  background-color:  rgba(116, 161, 106, 0.902); /* Green for Backend */
+}
+
+/* Databases */
+.databases {
+  background-color: rgba(216, 167, 177, 0.902); /* Pink for Databases */
+}
+
+/* DevOps/CI/CD */
+.devops {
+  background-color: rgba(147, 209, 194, 0.902); /* Cyan for DevOps */
+}
+
+/* Security */
+.security {
+  background-color: rgba(216, 191, 216, 0.902); /* Purple for Security */
+}
+
+/* Testing */
+.testing {
+  background-color: rgba(161, 136, 127, 0.902); /* Brown for Testing */
+}
+
+.skill-badge:hover {
+  transform: scale(1.1);
+}
+
+/* Scroll Arrow */
+/* Scroll Arrow for About Me Page */
+.scroll-arrow-about {
+  position: absolute;
+  bottom: 90px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Keep centered */
+  font-size: 2rem;
+  cursor: pointer;
+  /* No animation, so the arrow is static */
+}
+
+body.dark-mode .scroll-arrow-about {
+  color: #FAF9F6;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .aboutme-container {
+    max-width: 768px;
+    padding: 30px;
   }
-  
-  .content {
-    margin: 0 auto;
-    padding: 0 20px;
+  .about-me {
+    padding-top: 75px;
   }
-  
+
+  .about-me-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 50px; /* Reduce gap for smaller screens */
+    margin-top: 30px;
+  }
+
   .profile-pic {
-    max-width: 125px; /* Adjust the size of the profile picture as needed */
-    border-radius: 50%; /* Make the profile picture round */
-    float: right;
-    /* display: block;
-    margin: 0 auto; */
+    width: 250px; /* Reduce size for tablets */
+    height: 250px;
   }
-  
-  .about-me-text p {
-    font-size: 20px; /* Increase the font size of paragraphs */
-    line-height: 1.6; /* Improve readability with slightly increased line height */
+
+  .indented-paragraph {
+    font-size: 1rem; /* Adjust font size */
+    padding: 15px; /* Adjust padding */
+    width: auto;
   }
-  
+
+  .skills-list {
+    gap: 8px; /* Reduce gap between badges */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-me {
+    padding-top: 15px;
+  }
+
   .section-title {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 2rem; /* Reduce font size for smaller screens */
   }
-  
+
+  .about-me-content {
+    gap: 10px; /* Further reduce gap for mobile */
+    flex-direction: column-reverse;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .profile-pic {
+    width: 125px; /* Further reduce size for mobile */
+    height: 125px;
+  }
+
+  .indented-paragraph {
+    font-size: 0.85rem; /* Further reduce font size */
+    font-weight: bold;
+    padding: 10px 15px; /* Adjust padding */
+    line-height: 1.8;
+  }
+
+
+  .skills-section h3.section-title {
+    font-size: 1.4rem; /* Adjust section title size */
+    letter-spacing: 2px;
+    margin-top: 0px;
+  }
+
+  .skills-list {
+    gap: 8px; /* Further reduce gap between badges */
+    margin-top: 10px;
+  }
+
+  .skill-badge {
+    padding: 10px 5px;
+  }
+
+  .scroll-arrow-about {
+    bottom: 50px; /* Adjust arrow position for mobile */
+    font-size: 1.5rem; /* Reduce arrow size for mobile */
+    padding-bottom: 30px;
+  }
+}

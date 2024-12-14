@@ -1,65 +1,101 @@
 /* Header.css */
-
-.header {
-  display: flex;
-  align-items: center; /* Vertically center align */
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box; /* Include padding/border in the element's total width */
 }
 
+
+/* Main Header Styles */
+.header {
+  display: flex;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure the header stretches only across the screen width */
+  max-width: 100vw; /* Prevent it from exceeding the viewport width */
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  box-sizing: border-box; /* Makes padding part of the width */
+}
+
+
+
+/* Remove underline from the clickable h1 and style */
+.header-link {
+  text-decoration: none; /* Remove underline */
+}
+
+.header a {
+  margin-right: auto;
+}
+/* H1 Styles */
 .header h1 {
   margin-right: auto; /* Adding some margin to separate the h1 from the Nav */
-  margin-left: 20px;
-  margin-top: 28px;
-  padding: 10px 20px; /* Padding shorthand for top/bottom and left/right */
-  background-color: #f0f0f0; /* Light gray background */
-  border-radius: 5px; /* Adding a slight border radius for a softer look */
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px; /* Ensure padding is equal on all sides */
+  color: #282C2D;
+  background-color: #C4D1C2; /* Light gray background */
+  border-radius: 50%; /* Makes the h1 container circular */
   font-weight: bold; /* Making the text bold */
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Set a fixed height */
+  width: 60px; /* Set a fixed width equal to height */
+  text-align: center; /* Center the text inside the circle */
+  transition: background-color 0.3s ease; /* Optional hover effect */
 }
 
-.banner-image {
-  position: absolute;
-  width: 100%; /* Adjust this as needed */
-  z-index: -1; /* Places the image behind other content */
-  margin-bottom: 55px;
+.header h1:hover {
+  background-color: #B0C2AE; /* Optional hover effect to change the background color */
 }
 
-/* Media Query for smaller screens */
-@media (max-width: 959px) {
-  .header {
-    display: flex;
-    align-items: center;     
+/* Ensure that the body content doesn't hide behind the header */
+body {
+  padding-top: 80px; /* Adjust this value to match the height of your header */
+}
+
+body.dark-mode .header h1 {
+  color: #f1efe8;
+  background-color: #708F83;
+}
+
+body.dark-mode .header h1:hover {
+  background-color: #85aa9c;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 14px; /* Adjust the font size */
+    height: 50px; /* Adjust the height */
+    width: 50px; /* Adjust the width */
   }
 
   .header h1 {
-    margin: 15px 0; /* Adjust margins for better spacing */
-    margin-left: 15px;
-    margin-right: auto;
-    padding: 10px; /* Adjust padding */
-    font-size: 1.8em; /* Adjust font size */
-  }
-
-  .banner-image {
-    margin-bottom: 30px; /* Adjust margin for better spacing */
+    margin-left: 10px; /* Adjust margin for smaller screens */
   }
 }
 
-/* Media Query for screens with max width of 700px */
-@media (max-width: 700px) {
-  .header {
-    display: flex;
-    align-items: center;  
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 12px; /* Further adjust the font size */
+    height: 40px; /* Reduce the height */
+    width: 40px; /* Reduce the width */
   }
 
   .header h1 {
-    margin: 15px 0; /* Further adjust margins for better spacing */
-    margin-left: 10px;
-    margin-right: auto;
-    padding: 5px 10px; /* Further adjust padding */
-    font-size: 1.5em; /* Further adjust font size */
+    margin-left: 5px; /* Further reduce margin */
   }
 
-  .banner-image {
-    margin-bottom: 20px; /* Further adjust margin for better spacing */
+  .header {
+    padding: 0 10px; /* Add padding to the header for better spacing */
   }
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import './ContactPage.css'; // Import the CSS file
+import './ContactPage.css'; 
+import resume from '../assets/files/Resume.pdf';
+import Footer from '../components/Footer'
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -8,94 +10,172 @@ function ContactPage() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [fadeOut, setFadeOut] = useState(false); // New state for fading out
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
-
-    // Clear custom validation message
-    e.target.setCustomValidity('');
+    e.target.setCustomValidity(''); // Reset the custom validity
   };
-
+  
   const handleInvalid = (e) => {
     if (e.target.validity.valueMissing) {
       e.target.setCustomValidity('This field is required');
-    } else if (e.target.type === 'email' && e.target.validity.patternMismatch) {
+    } else if (e.target.type === 'email' && e.target.validity.typeMismatch) {
       e.target.setCustomValidity('Please enter a valid email address');
     } else {
       e.target.setCustomValidity('');
     }
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    if (!form.checkValidity()) {
-      // If the form is invalid, trigger the browser's HTML5 validation UI
-      form.reportValidity();
-      return;
-    }
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-    // Reset form fields
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+  
+  // Function to validate email format using regular expression
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Check if any fields are empty
+    if (!formData.name || !formData.email || !formData.message) {
+      setResponseMessage('Please fill in all fields before sending.');
+      setFadeOut(false); // Ensure message is shown immediately
+      setTimeout(() => {
+        setFadeOut(true); // Start fade-out after 3 seconds
+        setTimeout(() => {
+          setResponseMessage(''); // Remove message after fade-out
+        }, 1000); // Match the fade-out duration in CSS
+      }, 3000); // Display message for 3 seconds
+      return; // Stop form submission
+    }
+  
+    // Validate the email format
+    if (!isValidEmail(formData.email)) {
+      setResponseMessage('Please enter a valid email address.');
+      setFadeOut(false); // Ensure message is shown immediately
+      setTimeout(() => {
+        setFadeOut(true); // Start fade-out after 3 seconds
+        setTimeout(() => {
+          setResponseMessage(''); // Remove message after fade-out
+        }, 1000); // Match the fade-out duration in CSS
+      }, 3000); // Display message for 3 seconds
+      return; // Stop form submission
+    }
+  
+    setIsSubmitting(true);
+  
+    try {
+      const response = await fetch('http://localhost:3001/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+  
+      if (response.ok) {
+        setResponseMessage('Your message was sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        setResponseMessage('Failed to send your message. Please try again.');
+      }
+    } catch (error) {
+      setResponseMessage('An error occurred. Please try again later.');
+    }
+  
+    // Set fadeOut to false when showing the message, and then start fading out
+    setFadeOut(false);
+    setTimeout(() => {
+      setFadeOut(true); // Start fade-out after 3 seconds
+      setTimeout(() => {
+        setResponseMessage(''); // Remove message after fade-out
+      }, 1000); // Match the fade-out duration in CSS
+    }, 3000); // Display message for 3 seconds
+  
+    setIsSubmitting(false);
+  };   
 
   return (
-    <div className="contact-container pt-4">
-      <h2 className="section-title">Contact</h2>
-      <form className="contact-content contact-form" onSubmit={handleSubmit} noValidate>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            onInvalid={handleInvalid}
-            required
-          />
+    <div className="contact-section-container">
+      <div className="contact-container">
+        <div className="contact-left">
+          <h2 className="section-title">Send me a Message!</h2>
+          <p>
+            Like what you see? Want to collaborate on a project or just talk about 
+            similar interests? I’m always open to connect. Feel free to reach out!
+          </p>
+          <a href={resume} download='Chelsea_Ramdat_Resume'>Download Resume</a>
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            onInvalid={handleInvalid}
-            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-            required
-          />
+        <div className="contact-right">
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                placeholder="name"
+                value={formData.name}
+                onChange={handleChange}
+                onInvalid={handleInvalid}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="email"
+                value={formData.email}
+                onChange={handleChange}
+                onInvalid={handleInvalid}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <textarea
+                className="form-control"
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="message"
+                value={formData.message}
+                onChange={handleChange}
+                onInvalid={handleInvalid}
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+            {responseMessage && (
+              <p className={`response-message ${fadeOut ? 'fade-out' : ''}`}>
+                {responseMessage}
+              </p>
+            )}
+          </form>
         </div>
-        <div className="mb-3">
-          <label htmlFor="message" className="form-label">Message</label>
-          <textarea
-            className="form-control"
-            id="message"
-            name="message"
-            rows="4"
-            value={formData.message}
-            onChange={handleChange}
-            onInvalid={handleInvalid}
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      </div>
+      <Footer />
     </div>
   );
+  
 }
 
 export default ContactPage;
-

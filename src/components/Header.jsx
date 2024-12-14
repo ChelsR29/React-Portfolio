@@ -1,19 +1,16 @@
-import Nav from './Navigation'
+import Nav from './Navigation';
 import './Header.css'; 
-import Banner from '../assets/archispeak+website+banner+dark.png'
 
 const Header = () => {
   return (
     <header className='header'>
-       <h1>Chelsea R.</h1>
-       <Nav />
-       <img
-            src= {Banner}
-            alt="Banner"
-            className="banner-image"
-          />
+      <a href="#top" className="header-link">
+        <h1>Chelsea R.</h1>
+      </a>
+      <Nav />
     </header>
   );
 };
 
 export default Header;
+

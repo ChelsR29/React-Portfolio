@@ -2,22 +2,129 @@
   max-width: 1200px; /* Adjust as needed */
   margin: 0 auto;
   padding: 20px;
+  padding-top: 150px;
+  height: 100vh;
+  position: relative;
 }
 
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  font-weight: lighter;
+  font-family: 'Arial';
+  margin-bottom: 0px;
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+
 }
 
 .project-item {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hover-info {
+  font-size: 16px;
+  font-family: 'Arial';
+  color: #282C2D;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Class that triggers the animation */
+.animate-hover-info {
+  animation: fadeInScale 2s ease-in-out;
+}
+
+
+/* Keyframes for the text animation */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scroll-arrow-portfolio {
+  position: absolute;
+  bottom: 200px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Keep centered */
+  font-size: 2rem;
+  cursor: pointer;
+  /* No animation, so the arrow is static */
+}
+
+body.dark-mode .scroll-arrow-portfolio {
+  color: #FAF9F6;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+  .portfolio-container {
+    max-width: 768px;
+    padding-top: 100px;
+  }
+
+  .section-title {
+    font-size: 2rem; /* Adjust the font size for smaller screens */
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the min width of the grid items */
+    gap: 20px; /* Reduce the gap between grid items */
+  }
+
+  .hover-info {
+    font-size: 14px; /* Adjust hover text size for smaller screens */
+    margin-bottom: 40px;
+  }
+
+  .scroll-arrow-portfolio {
+    bottom: 150px; /* Adjust position for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-container {
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem; /* Further reduce the font size for small screens */
+    margin-top: 10px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr; /* Make the projects stack in one column */
+    gap: 20px; /* Further reduce the gap between grid items */
+  }
+
+  .hover-info {
+    font-size: 12px; /* Further adjust hover text size for mobile screens */
+    margin-bottom: 25px;
+  }
+
+  .scroll-arrow-portfolio {
+    bottom: 100px; /* Adjust position for mobile screens */
+    font-size: 1.5rem; /* Reduce the arrow size for mobile */
+    padding-bottom: 20px;
+  }
 }

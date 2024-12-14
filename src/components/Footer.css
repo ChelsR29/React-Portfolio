@@ -1,10 +1,7 @@
 /* Footer.css */
-
 footer {
     width: 100%;
-    padding: 20px 0; /* Adjust padding as needed */
     text-align: center;
-    margin-top: 20px; /* Adjust margin-top as needed */
 }
 
 footer .container {
@@ -16,4 +13,26 @@ footer .container p {
     margin-bottom: 10px; /* Adjust as needed */
 }
 
-  
+footer .container a {
+    padding-left: 7px;
+    padding-right: 7px;
+    /* transition: color 0.3s ease; */
+}
+
+footer .container a svg {
+    color: #4B5320;
+}
+
+body.dark-mode footer .container a svg {
+    color: #748C6D;
+}
+
+
+footer .container a svg:hover {
+    color: #8c9a3d;
+    transform: scale(1.10);
+}
+
+body.dark-mode footer .container a svg:hover {
+    color: #8FA68B;
+}
