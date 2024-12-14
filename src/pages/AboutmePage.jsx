@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import './AboutmePage.css';
-import ProfilePic from '../assets/IMG_2605.png';
+import ProfilePic from '../assets/images/IMG_2605.png';
 
 function AboutmePage() {
   return (

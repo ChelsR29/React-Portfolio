@@ -1,9 +1,9 @@
 // PortfolioPage.jsx
 import Project from '../components/Project';
 import './PortfolioPage.css'; // Import the CSS file
-import Project1 from '../assets/Project1.png'
-import Project2 from '../assets/Project2.png'
-import InProgress from '../assets/InProgress.png'
+import Project1 from '../assets/images/Project1.png'
+import Project2 from '../assets/images/Project2.png'
+import InProgress from '../assets/images/InProgress.png'
 
 
 const projects = [
@@ -31,7 +31,6 @@ const projects = [
     image: InProgress,
     techStack: ['React', 'JavaScript'], // Add placeholder or future tech stack
   }
-  // Add descriptions and techStack for the rest
 ];
 
 import { useEffect } from 'react';

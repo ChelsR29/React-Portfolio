@@ -1,6 +1,6 @@
 // Import necessary modules
 import express from 'express';
-import cors from 'cors'; // Import CORS
+import cors from 'cors'; 
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';

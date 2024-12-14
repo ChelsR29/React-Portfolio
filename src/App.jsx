@@ -1,8 +1,8 @@
-import Header from './src/components/Header';
-import AboutmePage from './src/pages/AboutmePage';
-import ContactPage from './src/pages/ContactPage';
-import PortfolioPage from './src/pages/PortfolioPage';
-import Homepage from './src/pages/Homepage';
+import Header from './components/Header';
+import AboutmePage from './pages/AboutmePage';
+import ContactPage from './pages/ContactPage';
+import PortfolioPage from './pages/PortfolioPage';
+import Homepage from './pages/Homepage';
 
 function App() {
   return (

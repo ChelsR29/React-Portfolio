@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import './Homepage.css';
-import heroImg from '../assets/HeroPic.png'
+import heroImg from '../assets/images/HeroPic.png'
 
 function Homepage() {
     return (
