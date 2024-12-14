@@ -1,15 +1,9 @@
 // Import necessary modules
 import express from 'express';
-import cors from 'cors';
+import cors from 'cors'; 
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Fix for `__dirname` in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Load environment variables from .env file
 dotenv.config();
@@ -17,29 +11,22 @@ dotenv.config();
 const app = express();
 
 // Enable CORS for all routes
-const corsOptions = {
-  origin: 'https://chelsea-react-portfolio.netlify.app', // Your frontend URL
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+app.use(cors()); // Add CORS middleware
 
-// To parse JSON request body
-app.use(express.json());
+app.use(express.json()); // To parse JSON request body
 
-// Serve static files from the root directory
-app.use(express.static(path.join(__dirname, '../'))); // Serve files from the app folder
+// Create OAuth2 client
+const oAuth2Client = new google.auth.OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  process.env.REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 // POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
   try {
     const { name, email, message } = req.body; // Get data from the contact form
-
-    const oAuth2Client = new google.auth.OAuth2(
-      process.env.CLIENT_ID,
-      process.env.CLIENT_SECRET,
-      process.env.REDIRECT_URI
-    );
-    oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
     const accessToken = await oAuth2Client.getAccessToken();
 
@@ -62,6 +49,8 @@ app.post('/send-email', async (req, res) => {
       text: `You received a message from ${name} (${email}):\n\n${message}`, // The email content
       replyTo: email, // This ensures replies go to the user
     };
+      
+      
 
     const result = await transporter.sendMail(mailOptions);
     console.log(result);
@@ -71,11 +60,6 @@ app.post('/send-email', async (req, res) => {
     console.error('Error:', error);
     res.status(500).json({ message: 'Failed to send email', error });
   }
-});
-
-// Default route to serve the frontend
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../index.html')); // Adjusted to locate index.html in the root directory
 });
 
 // Start the server
