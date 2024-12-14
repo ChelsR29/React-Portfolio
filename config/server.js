@@ -26,8 +26,8 @@ app.use(cors(corsOptions));
 // To parse JSON request body
 app.use(express.json());
 
-// Serve static files from the React build folder
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from the public folder in the root directory
+app.use(express.static(path.join(__dirname, '../public')));
 
 // POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
@@ -75,7 +75,7 @@ app.post('/send-email', async (req, res) => {
 
 // Default route to serve the frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 // Start the server
@@ -83,3 +83,4 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
