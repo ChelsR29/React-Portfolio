@@ -18,7 +18,7 @@ const app = express();
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: 'https://chelsea-react-portfolio.netlify.app',
+  origin: 'https://main--chelsea-react-portfolio.netlify.app',
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
