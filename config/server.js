@@ -1,5 +1,4 @@
 // Import necessary modules
-// Import necessary modules
 import express from 'express';
 import cors from 'cors';
 import { google } from 'googleapis';
@@ -19,7 +18,7 @@ const app = express();
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: 'https://chelsea-react-portfolio.netlify.app', // Your frontend URL
+  origin: 'https://chelsea-react-portfolio.netlify.app',
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -33,9 +32,8 @@ app.use(express.static(path.join(__dirname, '../')));
 // POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
   try {
-    const { name, email, message } = req.body; // Get data from the contact form
+    const { name, email, message } = req.body;
 
-    // Configure OAuth2 client
     const oAuth2Client = new google.auth.OAuth2(
       process.env.CLIENT_ID,
       process.env.CLIENT_SECRET,
@@ -43,10 +41,15 @@ app.post('/send-email', async (req, res) => {
     );
     oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
-    // Get access token
     const accessToken = await oAuth2Client.getAccessToken();
 
-    // Configure Nodemailer transporter
+    if (!accessToken) {
+      console.error('Failed to generate access token');
+      return res.status(500).json({ message: 'Failed to authenticate with Google' });
+    }
+
+    console.log('Access Token:', accessToken.token);
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -55,30 +58,28 @@ app.post('/send-email', async (req, res) => {
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: accessToken.token || accessToken, // Handle token directly
+        accessToken: accessToken.token,
       },
     });
 
-    // Configure email options
     const mailOptions = {
-      from: `${name} <${process.env.EMAIL_USER}>`, // Sender's name and email
-      to: process.env.EMAIL_USER, // Your email to receive messages
-      subject: `New message from ${name}`, // Subject line
-      text: `You received a message from ${name} (${email}):\n\n${message}`, // Email body
-      replyTo: email, // Reply directly to sender's email
+      from: `${name} <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: `New message from ${name}`,
+      text: `You received a message from ${name} (${email}):\n\n${message}`,
+      replyTo: email,
     };
 
-    // Send email
     const result = await transporter.sendMail(mailOptions);
-    console.log('Email sent:', result);
+    console.log('Email sent successfully:', result);
 
-    // Respond with success message
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
     res.status(500).json({ message: 'Failed to send email', error });
   }
 });
+
 
 // Default route to serve the frontend
 app.get('*', (req, res) => {
