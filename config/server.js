@@ -25,7 +25,8 @@ const corsOptions = {
   methods: ['POST', 'GET', 'OPTIONS'],
   credentials: true,
 };
-app.options('/send-email', cors(corsOptions)); // Allow preflight requests on this route
+app.options('*', cors(corsOptions)); // Handle all preflight requests
+
 
 
 // To parse JSON request body
@@ -46,19 +47,16 @@ app.post('/send-email', async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
-    // Set credentials for OAuth2 client
     oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-
-    const accessToken = await oAuth2Client.getAccessToken().catch((error) => {
-      console.error('Error generating access token:', error);
-      return null;
+    const accessToken = await oAuth2Client.getAccessToken().catch((err) => {
+      console.error('Access token error:', err);
+      throw new Error('Failed to generate access token');
     });
 
     if (!accessToken || !accessToken.token) {
-      return res.status(500).json({ message: 'Failed to authenticate with Google' });
+      throw new Error('Access token is null or undefined');
     }
 
-    // Nodemailer Transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -71,7 +69,6 @@ app.post('/send-email', async (req, res) => {
       },
     });
 
-    // Email options
     const mailOptions = {
       from: `${name} <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
@@ -80,16 +77,16 @@ app.post('/send-email', async (req, res) => {
       replyTo: email,
     };
 
-    // Send Email
     const result = await transporter.sendMail(mailOptions);
     console.log('Email sent successfully:', result);
 
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email', error });
+    console.error('Error in /send-email:', error); // Log detailed error
+    res.status(500).json({ message: 'Failed to send email', error: error.message });
   }
 });
+
 
 // Default route to serve the frontend
 app.get('*', (req, res) => {
