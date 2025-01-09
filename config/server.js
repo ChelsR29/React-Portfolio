@@ -1,48 +1,50 @@
+// Import necessary modules
 import express from 'express';
-import cors from 'cors';
+import cors from 'cors'; 
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-  origin: ['https://main--chelsea-react-portfolio.netlify.app'],
-  methods: ['GET', 'POST', 'OPTIONS'],
-  credentials: true,
-};
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../')));
+// CORS configuration to allow both localhost and deployed URL
+const allowedOrigins = [
+  'https://chelsea-react-portfolio.netlify.app', // Production
+  'http://localhost:3000', // Localhost testing (Adjust the port if necessary)
+];
 
-// OAuth2 Client Setup
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true); // Allow the request if origin matches or if it's server-to-server request (null origin)
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
+  credentials: true, // Allow cookies if needed
+};
+
+app.use(cors(corsOptions)); // Add CORS middleware
+app.use(express.json()); // To parse JSON request body
+
+// Create OAuth2 client
 const oAuth2Client = new google.auth.OAuth2(
   process.env.CLIENT_ID,
   process.env.CLIENT_SECRET,
   process.env.REDIRECT_URI
 );
+oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
+// POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message } = req.body; // Get data from the contact form
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ message: 'All fields are required.' });
-    }
-
-    oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-    const accessTokenResponse = await oAuth2Client.getAccessToken();
-
-    const accessToken = accessTokenResponse?.token;
-    if (!accessToken) {
-      throw new Error('Failed to generate access token');
-    }
+    const accessToken = await oAuth2Client.getAccessToken();
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -52,33 +54,30 @@ app.post('/send-email', async (req, res) => {
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: accessToken,
+        accessToken: accessToken.token,
       },
     });
 
     const mailOptions = {
-      from: `${name} <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      subject: `New message from ${name}`,
-      text: `You received a message from ${name} (${email}):\n\n${message}`,
-      replyTo: email,
+      from: `${name} <${process.env.EMAIL_USER}>`, // Still your email as Gmail enforces this
+      to: process.env.EMAIL_USER, // Your email to receive messages
+      subject: `New message from ${name}`, // Subject line with user's name
+      text: `You received a message from ${name} (${email}):\n\n${message}`, // The email content
+      replyTo: email, // This ensures replies go to the user
     };
+      
+    const result = await transporter.sendMail(mailOptions);
+    console.log(result);
 
-    await transporter.sendMail(mailOptions);
-
-    res.status(200).json({ message: 'Email sent successfully!' });
+    res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
-    console.error('Error in /send-email:', error.message);
-    res.status(500).json({ message: 'Failed to send email', error: error.message });
+    console.error('Error:', error);
+    res.status(500).json({ message: 'Failed to send email', error });
   }
 });
 
-// Serve the frontend
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../index.html'));
-});
-
+// Start the server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

@@ -81,8 +81,7 @@ function ContactPage() {
           email: formData.email,
           message: formData.message,
         }),
-        mode: 'cors', // Ensure CORS mode is enabled
-      });      
+      });
   
       if (response.ok) {
         setResponseMessage('Your message was sent successfully!');
