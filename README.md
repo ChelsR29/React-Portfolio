@@ -100,4 +100,4 @@ I'm open to connecting with other developers, collaborating on projects, or expl
 
 ## Link to Deployed Application
 
-https://main--chelsea-react-portfolio.netlify.app/
+https://chelsea-react-portfolio.netlify.app/
