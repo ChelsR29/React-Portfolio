@@ -39,12 +39,24 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
+// Function to refresh access token
+const getAccessToken = async () => {
+  try {
+    const { token } = await oAuth2Client.getAccessToken();
+    return token;
+  } catch (error) {
+    console.error('Failed to retrieve access token:', error);
+    throw new Error('Failed to retrieve access token');
+  }
+};
+
 // POST route to handle form submissions and send email
 app.post('/send-email', async (req, res) => {
   try {
     const { name, email, message } = req.body; // Get data from the contact form
 
-    const accessToken = await oAuth2Client.getAccessToken();
+    // Refresh access token
+    const accessToken = await getAccessToken();
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -54,7 +66,7 @@ app.post('/send-email', async (req, res) => {
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: accessToken.token,
+        accessToken: accessToken,
       },
     });
 
@@ -81,3 +93,4 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
