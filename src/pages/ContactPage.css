@@ -45,6 +45,10 @@ footer {
   font-size: 15px;
 }
 
+body.dark-mode .contact-left p {
+  color: #FAF9F6;
+}
+
 .contact-left a {
   padding: 10px 20px;
   font-size: 1rem;
@@ -142,31 +146,15 @@ body.dark-mode .response-message {
 
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-  .contact-container {
-    flex-direction: column;
-  }
-
-  .contact-left, .contact-right {
-    padding: 0;
-    text-align: center;
-  }
-
-  .social-icons a {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-}
-
-/* Responsive adjustments */
 @media (max-width: 1024px) {
   .contact-container {
     flex-direction: column;
     align-items: center;
     padding-left: 50px; /* Adjust padding for smaller screens */
     padding-right: 50px;
-    padding-top: 210px;
-    gap: 50px;
+    padding-top: 70px;
+    gap: 30px;
+    margin-bottom: 20px;
   }
 
   .contact-left, .contact-right {
@@ -183,18 +171,35 @@ body.dark-mode .response-message {
   }
 }
 
+@media (max-width: 600px) {
+  .contact-container {
+    flex-direction: column;
+    padding-left: 20px; /* Further reduce padding for mobile */
+    padding-right: 20px;
+    padding-top: 120px;
+    gap: 20px;
+  }
+}
+
+
 @media (max-width: 480px) {
   .contact-container {
     flex-direction: column;
     padding-left: 20px; /* Further reduce padding for mobile */
     padding-right: 20px;
-    padding-top: 180px;
-    gap: 40px;
+    padding-top: 120px;
+    gap: 20px;
   }
+
+  footer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
   .contact-left p {
     font-size: 14px;
     max-width: 300px; /* Adjust max width for mobile */
+    margin-top: 0px;
   }
 
   .contact-left a {

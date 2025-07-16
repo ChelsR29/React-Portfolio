@@ -1,234 +1,195 @@
 /* General About Me Styles */
 .aboutme-container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  padding-top: 40px;
+  padding: 50px 50px 40px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative; /* Ensure the scroll indicator is relative to this section */
+  overflow: hidden;
 }
 
-.section-title {
+.aboutme-container .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: lighter;
-  font-family: 'Arial';
-  color: #282C2D;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Flexbox layout for text and image */
-.about-me-content {
-  margin-top: 30px;
-  padding-left: 80px;
-  padding-right: 80px;
+h2.section-title {
+  margin-bottom: 10px;
+}
+
+.hover-about {
+  text-align: center;
+  font-size: 0.95rem;
+  font-family: 'Arial', sans-serif;
+  font-weight: 400;
+  color: #444;
+  margin-bottom: 70px;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+.animate-hover-about {
+  animation: fadeInScale 1.5s ease-in-out;
+}
+
+/* ==== Keyframes ==== */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.centered-profile {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 100px; /* Space between text and image */
+  position: relative;
+  margin-top: 30px;
 }
 
-.about-me-text {
-  flex: 1; /* Makes the paragraph take up 50% of the width */
-}
-
-.indented-paragraph {
-  text-indent: 20px;
-  font-size: 1.2rem;
-  line-height: 2;
-  text-align: left;
-  background-color: #e0b0b0ad;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 15px;
-  display: block; /* Ensures it takes up the full width */
-  width: 100%; /* Makes sure the element spans the entire width */
-  text-align: justify; /* Distributes the text evenly across the line */
-}
-
-body.dark-mode .indented-paragraph {
-  color: #F5F5F5;
+.profile-wrapper {
+  position: relative;
+  width: 325px;
+  height: 325px;
 }
 
 .profile-pic {
-  width: 325px; /* Set a fixed or max width */
-  height: 325px; /* Set a fixed or max height */
-  border-radius: 50%; /* Makes it circular if it's a square image */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  object-position: center; /* Centers the image within the frame */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  transition: filter 0.3s ease;
 }
 
-/* Centered Skills Section */
-.skills-section {
+/* Floating container */
+.hover-interests {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 325px;
+  height: 325px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.profile-wrapper:hover .hover-interests {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.profile-wrapper:hover .profile-pic {
+  filter: brightness(0.5);
+}
+
+/* Interest bubble with emoji + label stacked */
+.interest-bubble {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float 3s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+}
+
+.interest-bubble span {
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.interest-bubble p {
+  font-size: 0.9rem;
+  margin-top: 25px;
+  font-weight: 550;
+  color: #222;
   text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  max-width: 100px;
 }
 
-h3.section-title {
-  font-size: 28px;
-  font-family: 'Arial';
+body.dark-mode .interest-bubble p {
+  color: inherit;
+
+}
+
+.indented-paragraph.paragraph-below-image {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.1rem;
   font-weight: lighter;
-  margin-top: 15px;
-  letter-spacing: 3px;
+  line-height: 1.75;
+  color: #333;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 30px auto;
+  text-align: justify;
+  letter-spacing: 0.8px;
+  word-spacing: -0.8px;
 }
 
-body.dark-mode h3.section-title {
+body.dark-mode .indented-paragraph.paragraph-below-image {
   color: #FAF9F6;
 }
 
-/* Flexbox for skills */
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px; /* More spacing between the badges */
-  margin-top: 20px;
+/* Floating positions */
+.interest-bubble:nth-child(1) { top: 15px; left: 90%; }
+.interest-bubble:nth-child(2) { top: 20%; left: 110%; }
+.interest-bubble:nth-child(3) { top: 70%; left: -15%; }
+.interest-bubble:nth-child(4) { top: 45%; left: 120%; }
+.interest-bubble:nth-child(5) { top: 45%; left: -20%; }
+.interest-bubble:nth-child(6) { top: 72%; left: 115%; }
+.interest-bubble:nth-child(7) { top: 95%; left: 0%; }
+.interest-bubble:nth-child(8) { top: 65px; left: -5%; }
+.interest-bubble:nth-child(9) { top: 97%; left: 100%; }
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+  100% { transform: translate(-50%, -50%) translateY(0); }
 }
 
-/* General skill badge styling */
-.skill-badge {
-  padding: 15px 10px;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  color: #fff;
-  transition: transform 0.3s ease;
-  flex: 1 1 100px; /* Adjusts size to allow badges to wrap and be evenly spaced */
-  text-align: center;
-}
-
-/* Frontend Skills */
-.frontend {
-  background-color: rgba(106, 127, 173, 0.902) ; /* Blue for Frontend */
-}
-
-/* Backend Skills */
-.backend {
-  background-color:  rgba(116, 161, 106, 0.902); /* Green for Backend */
-}
-
-/* Databases */
-.databases {
-  background-color: rgba(216, 167, 177, 0.902); /* Pink for Databases */
-}
-
-/* DevOps/CI/CD */
-.devops {
-  background-color: rgba(147, 209, 194, 0.902); /* Cyan for DevOps */
-}
-
-/* Security */
-.security {
-  background-color: rgba(216, 191, 216, 0.902); /* Purple for Security */
-}
-
-/* Testing */
-.testing {
-  background-color: rgba(161, 136, 127, 0.902); /* Brown for Testing */
-}
-
-.skill-badge:hover {
-  transform: scale(1.1);
-}
-
-/* Scroll Arrow */
-/* Scroll Arrow for About Me Page */
 .scroll-arrow-about {
-  position: absolute;
-  bottom: 90px; /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%); /* Keep centered */
-  font-size: 2rem;
-  cursor: pointer;
-  /* No animation, so the arrow is static */
+  color: inherit;
+  overflow: hidden;
 }
 
 body.dark-mode .scroll-arrow-about {
-  color: #FAF9F6;
+  color: inherit;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 1024px) {
-  .aboutme-container {
-    max-width: 768px;
-    padding: 30px;
-  }
-  .about-me {
-    padding-top: 75px;
+
+/* Make bubbles float out more on larger screens */
+@media (min-width: 768px) {
+  .hover-interests span {
+    position: absolute;
   }
 
-  .about-me-content {
-    padding-left: 20px;
-    padding-right: 20px;
-    gap: 50px; /* Reduce gap for smaller screens */
-    margin-top: 30px;
-  }
-
-  .profile-pic {
-    width: 250px; /* Reduce size for tablets */
-    height: 250px;
-  }
-
-  .indented-paragraph {
-    font-size: 1rem; /* Adjust font size */
-    padding: 15px; /* Adjust padding */
-    width: auto;
-  }
-
-  .skills-list {
-    gap: 8px; /* Reduce gap between badges */
-  }
-}
-
-@media (max-width: 480px) {
-  .about-me {
-    padding-top: 15px;
-  }
-
-  .section-title {
-    font-size: 2rem; /* Reduce font size for smaller screens */
-  }
-
-  .about-me-content {
-    gap: 10px; /* Further reduce gap for mobile */
-    flex-direction: column-reverse;
-    margin-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .profile-pic {
-    width: 125px; /* Further reduce size for mobile */
-    height: 125px;
-  }
-
-  .indented-paragraph {
-    font-size: 0.85rem; /* Further reduce font size */
-    font-weight: bold;
-    padding: 10px 15px; /* Adjust padding */
-    line-height: 1.8;
-  }
-
-
-  .skills-section h3.section-title {
-    font-size: 1.4rem; /* Adjust section title size */
-    letter-spacing: 2px;
-    margin-top: 0px;
-  }
-
-  .skills-list {
-    gap: 8px; /* Further reduce gap between badges */
-    margin-top: 10px;
-  }
-
-  .skill-badge {
-    padding: 10px 5px;
-  }
-
-  .scroll-arrow-about {
-    bottom: 50px; /* Adjust arrow position for mobile */
-    font-size: 1.5rem; /* Reduce arrow size for mobile */
-    padding-bottom: 30px;
-  }
+  .hover-interests span:nth-child(1) { top: 10%; left: 50%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(2) { top: 25%; left: 75%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(3) { top: 75%; left: 25%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(4) { top: 40%; left: 90%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(5) { top: 40%; left: 10%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(6) { top: 60%; left: 80%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(7) { top: 60%; left: 20%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(8) { top: 15%; left: 30%; transform: translate(-50%, -50%); }
+  .hover-interests span:nth-child(9) { top: 85%; left: 70%; transform: translate(-50%, -50%); }
 }

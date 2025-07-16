@@ -4,6 +4,11 @@ import './PortfolioPage.css'; // Import the CSS file
 import Project1 from '../assets/images/Project1.png'
 import Project2 from '../assets/images/Project2.png'
 import InProgress from '../assets/images/InProgress.png'
+import {
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaGitAlt,
+  FaDatabase, FaGithub, FaLock, FaShieldAlt, FaFlask, FaExchangeAlt, FaCode
+} from 'react-icons/fa';
+import { SiRedux, SiExpress, SiGraphql, SiMysql, SiMongodb, SiJest } from 'react-icons/si';
 
 
 const projects = [
@@ -25,7 +30,7 @@ const projects = [
   },
   {
     title: 'In Progress',
-    description: 'More projects are currently under development.',
+    description: 'Check out my Github for more projects I am currently working on!',
     deployLink: '#', // Placeholder or omit if you want
     repoLink: '#', // Placeholder or omit if you want
     image: InProgress,
@@ -82,13 +87,104 @@ function Portfolio() {
         ))}
       </div>
 
-      {/* Scroll Indicator at the Bottom */}
-      <a href="#aboutme" className="scroll-arrow-portfolio">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </a>
+      {/* Technical Skills Section */}
+        <section className="skills-section">
+          <h3 className="section-title">Technical Skills</h3>
 
+          <div className="skills-list">
+            <div className="skill-badge frontend">
+              <span className="skill-category">Frontend</span>
+              <FaHtml5 size={40} />
+              <span className="skill-label">HTML</span>
+            </div>
+            <div className="skill-badge frontend">
+              <span className="skill-category">Frontend</span>
+              <FaCss3Alt size={40} />
+              <span className="skill-label">CSS</span>
+            </div>
+            <div className="skill-badge frontend">
+              <span className="skill-category">Frontend</span>
+              <FaJs size={40} />
+              <span className="skill-label">JavaScript</span>
+            </div>
+            <div className="skill-badge frontend">
+              <span className="skill-category">Frontend</span>
+              <FaReact size={40} />
+              <span className="skill-label">React</span>
+            </div>
+            <div className="skill-badge frontend">
+              <span className="skill-category">Frontend</span>
+              <SiRedux size={40} />
+              <span className="skill-label">Redux</span>
+            </div>
+
+            <div className="skill-badge backend">
+              <span className="skill-category">Backend</span>
+              <FaNode size={40} />
+              <span className="skill-label">Node.js</span>
+            </div>
+            <div className="skill-badge backend">
+              <span className="skill-category">Backend</span>
+              <SiExpress size={40} />
+              <span className="skill-label">Express</span>
+            </div>
+            <div className="skill-badge backend">
+              <span className="skill-category">Backend</span>
+              <FaExchangeAlt size={32} />
+              <span className="skill-label">RESTful APIs</span>
+            </div>
+            <div className="skill-badge backend">
+              <span className="skill-category">Backend</span>
+              <SiGraphql size={40} />
+              <span className="skill-label">GraphQL</span>
+            </div>
+
+            <div className="skill-badge databases">
+              <span className="skill-category">Database</span>
+              <SiMysql size={40} />
+              <span className="skill-label">MySQL</span>
+            </div>
+            <div className="skill-badge databases">
+              <span className="skill-category">Database</span>
+              <SiMongodb size={40} />
+              <span className="skill-label">MongoDB</span>
+            </div>
+
+            <div className="skill-badge devops">
+              <span className="skill-category">DevOps</span>
+              <FaGithub size={40} />
+              <span className="skill-label">GitHub</span>
+            </div>
+
+            <div className="skill-badge security">
+              <span className="skill-category">Security</span>
+              <FaLock size={40} />
+              <span className="skill-label">OAuth</span>
+            </div>
+            <div className="skill-badge security">
+              <span className="skill-category">Security</span>
+              <FaShieldAlt size={40} />
+              <span className="skill-label">JWT</span>
+            </div>
+
+            <div className="skill-badge testing">
+              <span className="skill-category">Testing</span>
+              <SiJest size={40} />
+              <span className="skill-label">Jest</span>
+            </div>
+          </div>
+
+
+
+          {/* Scroll Arrow now inside the skills section */}
+          <a href="#aboutme" className="scroll-arrow-portfolio">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+        </section>
     </div>
   );
 }

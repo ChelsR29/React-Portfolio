@@ -96,7 +96,7 @@ body.dark-mode p {
 
    
 /* Media Queries for responsiveness */
-@media (max-width: 1024px) {
+@media (max-width: 1141px) {
     #hero {
         flex-direction: column; /* Stack elements vertically */
         padding: 0 20px;

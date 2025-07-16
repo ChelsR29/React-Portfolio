@@ -1,58 +1,74 @@
-.portfolio-container {
-  max-width: 1200px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 20px;
-  padding-top: 150px;
-  height: 100vh;
-  position: relative;
+/* ==== Container ==== */
+body, h1, h2, h3, h4, h5, h6, p, a, span, svg {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+
+.portfolio-container {
+  margin: 0 auto;
+  padding: 50px 94px 40px;
+  position: relative;
+  max-height: 100vh;
+}
+
+/* ==== Section Titles ==== */
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: lighter;
-  font-family: 'Arial';
-  margin-bottom: 0px;
+  font-size: 2.5rem; /* Slightly smaller to match skills section */
+  font-weight: 500; /* Bolder for presence */
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
 }
 
+
+/* ==== Hover Instruction Text ==== */
+.hover-info {
+  text-align: center;
+  font-size: 0.95rem;
+  font-family: 'Arial', sans-serif;
+  font-weight: 400;
+  color: #444;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+/* Optional animation class */
+.animate-hover-info {
+  animation: fadeInScale 1.5s ease-in-out;
+}
+
+/* ==== Project Grid Layout ==== */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
-
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  padding: 0 10px 20px;
 }
 
 .project-item {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hover-info {
-  font-size: 16px;
-  font-family: 'Arial';
-  color: #282C2D;
-  text-align: center;
-  margin-bottom: 60px;
+.project-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Class that triggers the animation */
-.animate-hover-info {
-  animation: fadeInScale 2s ease-in-out;
-}
-
-
-/* Keyframes for the text animation */
+/* ==== Keyframes ==== */
 @keyframes fadeInScale {
   0% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.95);
   }
   50% {
     opacity: 0.5;
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
   100% {
     opacity: 1;
@@ -60,71 +76,310 @@
   }
 }
 
+body.dark-mode .hover-info {
+  color: #ddd;
+}
+
+body.dark-mode .project-item:hover {
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .section-title {
+  color: #FAF9F6;
+}
+
+/* ==== Skills Section ==== */
+
+.skills-section {
+  text-align: center;
+  margin-top: 0px;
+  position: relative;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .skills-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skills-section .section-title {
+  font-size: 1.75rem;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+/* ==== Skill Badges ==== */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* === Skill Badges Base === */
+.skill-badge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 95px;
+  height: 95px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease;
+  gap: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: visible;
+}
+
+/* Icon animation */
+.skill-badge:hover {
+  transform: scale(1.12);
+}
+
+.skill-badge svg {
+  font-size: 2.25rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-badge:hover svg {
+  transform: scale(1.3) rotate(3deg);
+}
+
+.skill-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+
+/* === Category Overlay === */
+.skill-category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background-color: rgba(43, 41, 41, 0.775);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  border-radius: 10px;
+  z-index: 1;
+  padding: 4px; /* Optional: add some breathing room */
+}
+
+.skill-badge:hover .skill-category {
+  opacity: 1;
+}
+
+/* === Category Colors for Light & Dark Mode === */
+.frontend  { color: rgb(106, 127, 173); }
+.backend   { color: rgb(116, 161, 106); }
+.databases { color: rgb(216, 167, 177); }
+.devops    { color: rgb(147, 209, 194); }
+.security  { color: rgb(214, 179, 214); }
+.testing   { color: rgb(161, 136, 127); }
+
+/* Match shadow glow to category color */
+.frontend  { box-shadow: 0 0 10px rgba(106, 127, 173, 0.6); }
+.backend   { box-shadow: 0 0 10px rgba(116, 161, 106, 0.6); }
+.databases { box-shadow: 0 0 10px rgba(216, 167, 177, 0.6); }
+.devops    { box-shadow: 0 0 10px rgba(147, 209, 194, 0.6); }
+.security  { box-shadow: 0 0 10px rgba(214, 179, 214, 0.6); }
+.testing   { box-shadow: 0 0 10px rgba(161, 136, 127, 0.6); }
+
+/* === Dark Mode === */
+body.dark-mode .skill-badge {
+  color: hsla(45, 29%, 97%, 0.9);
+}
+
+body.dark-mode .skill-category {
+  background-color: rgba(43, 41, 41, 0.914);
+  color: #FAF9F6;
+}
+
+/* Keep shadow colors in dark mode */
+body.dark-mode .frontend  { background-color:  rgba(106, 127, 173, 0.9); box-shadow: 0 0 5px rgba(106, 127, 173, 0.6);}
+body.dark-mode .backend   { background-color:  rgba(116, 161, 106, 0.9); box-shadow: 0 0 5px rgba(116, 161, 106, 0.6);}
+body.dark-mode .databases { background-color:  rgba(216, 167, 177, 0.9); box-shadow: 0 0 5px rgba(216, 167, 177, 0.6);}
+body.dark-mode .devops    { background-color:  rgba(147, 209, 194, 0.9); box-shadow: 0 0 5px rgba(147, 209, 194, 0.6);}
+body.dark-mode .security  { background-color:  rgba(216, 191, 216, 0.9); box-shadow: 0 0 5px rgba(214, 179, 214, 0.6);}
+body.dark-mode .testing   { background-color:  rgba(161, 136, 127, 0.9); box-shadow: 0 0 5px rgba(161, 136, 127, 0.6);}
+
+
+/* ==== Scroll Arrow ==== */
 .scroll-arrow-portfolio {
   position: absolute;
-  bottom: 200px; /* Adjust as needed */
+  bottom: 0;
   left: 50%;
-  transform: translateX(-50%); /* Keep centered */
-  font-size: 2rem;
+  transform: translateX(-50%);
+  font-size: 1.75rem;
   cursor: pointer;
-  /* No animation, so the arrow is static */
 }
 
 body.dark-mode .scroll-arrow-portfolio {
   color: #FAF9F6;
 }
 
-/* Media Queries for responsiveness */
-@media (max-width: 1024px) {
+/* ==== Responsive Adjustments ==== */
+@media (max-width: 1111px) {
   .portfolio-container {
-    max-width: 768px;
-    padding-top: 100px;
+    padding: 80px 40px 30px; /* Reduced padding for more room */
+    max-height: none; /* Allow natural scrolling */
   }
 
   .section-title {
-    font-size: 2rem; /* Adjust the font size for smaller screens */
+    font-size: 2rem;
+    margin-bottom: 16px;
   }
 
-  .project-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the min width of the grid items */
-    gap: 20px; /* Reduce the gap between grid items */
-  }
-
-  .hover-info {
-    font-size: 14px; /* Adjust hover text size for smaller screens */
-    margin-bottom: 40px;
-  }
-
-  .scroll-arrow-portfolio {
-    bottom: 150px; /* Adjust position for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .portfolio-container {
-    padding-top: 80px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .section-title {
-    font-size: 1.8rem; /* Further reduce the font size for small screens */
-    margin-top: 10px;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr; /* Make the projects stack in one column */
-    gap: 20px; /* Further reduce the gap between grid items */
-  }
-
-  .hover-info {
-    font-size: 12px; /* Further adjust hover text size for mobile screens */
+  .skills-section .section-title {
+    font-size: 1.55rem;
     margin-bottom: 25px;
   }
 
+  .hover-info {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  .skill-badge {
+    width: 75px;
+    height: 75px;
+    font-size: 0.9rem;
+    gap: 6px;
+  }
+
+  .skill-badge svg {
+    font-size: 1.8rem;
+  }
+
+  .skill-label {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .skill-category {
+    font-size: 0.68rem;
+    padding: 2px;
+  }
+
+  /* Optional: grid tweak for tighter screens */
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  .project {
+    border-radius: 6px;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    padding: 0 8px;
+  }
+
+  .tech-badge {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
+
+  .project-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 897px) {
+  .project-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .portfolio-container {
+    padding: 60px 40px 30px;
+  }
+
+  .skills-list {
+    margin-bottom: 80px;
+  }
+
+  .skill-badge {
+    width: 60px;
+    height: 60px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .skill-badge svg {
+    font-size: 1.5rem; /* ✅ increased from 0.5rem */
+  }
+
+  .skill-label {
+    font-size: 0.85rem;
+  }
+
+  .skill-category {
+    font-size: 0.6rem;
+    padding: 2px;
+  }
+
   .scroll-arrow-portfolio {
-    bottom: 100px; /* Adjust position for mobile screens */
-    font-size: 1.5rem; /* Reduce the arrow size for mobile */
-    padding-bottom: 20px;
+    font-size: 1.3rem;
+    bottom: 24px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .hover-info {
+    font-size: 0.8rem;
+  }
+
+  .skill-badge {
+    width: 60px;
+    height: 60px;
+    font-size: 0.8rem;
+  }
+
+  .skill-badge svg {
+    font-size: 1.6rem;
+  }
+
+  .skill-label {
+    font-size: 0.85rem;
+  }
+
+  .skill-category {
+    font-size: 0.6rem;
+  }
+
+  .project-grid {
+    gap: 16px;
   }
 }
