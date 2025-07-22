@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column; /* Make sure the footer comes below */
   min-height: 100vh; /* Ensure the entire content is at least the height of the viewport */
+  overflow: hidden;
 }
 
 .contact-container {
@@ -187,7 +188,7 @@ body.dark-mode .response-message {
     flex-direction: column;
     padding-left: 20px; /* Further reduce padding for mobile */
     padding-right: 20px;
-    padding-top: 120px;
+    padding-top: 140px;
     gap: 20px;
   }
 
