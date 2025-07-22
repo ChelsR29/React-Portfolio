@@ -211,7 +211,8 @@ body.dark-mode .scroll-arrow-about {
   }
 
   .interest-bubble p {
-    margin-top: 0px;
+    margin-top: 8px;
+    font-size: 0.7rem;
   }
     
   .interest-bubble:nth-child(1) { top: 30px; left: 75%; }
