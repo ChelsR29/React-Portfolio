@@ -8,8 +8,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, svg {
   margin: 0 auto;
   padding: 50px 94px 40px;
   position: relative;
-  max-height: 100vh;
-  overflow: hidden;
 }
 
 /* ==== Section Titles ==== */
@@ -106,10 +104,45 @@ body.dark-mode .skills-section {
 .skills-section .section-title {
   font-size: 1.75rem;
   letter-spacing: 1px;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   padding-top: 10px;
   margin-top: 10px;
 }
+
+.toggle-skills {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Arial', sans-serif;
+  color: #FAF9F6;
+  background-color: #222;
+  border: none;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-skills:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+body.dark-mode .toggle-skills {
+  background-color: #FAF9F6;
+  color: #222;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .toggle-skills:hover {
+  background-color: #e0e0e0;
+}
+
+
+
 
 /* ==== Skill Badges ==== */
 .skills-list {
@@ -355,59 +388,99 @@ body.dark-mode .scroll-arrow-portfolio {
 
 @media (max-width: 480px) {
   .portfolio-container {
-      padding: 40px 20px 30px;
+    padding: 20px 16px;
+    height: auto;         /* ✅ Allow container to grow */
+    overflow: visible;    /* ✅ Allow scrolling naturally */
   }
+
   .section-title {
-    font-size: 1.6rem;
-  }
-
-  h2.section-title {
-    margin: 0px;
-}
-
-  .project-item {
-    max-width: 272px;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
   }
 
   .hover-info {
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+  }
+
+  .skills-section {
+    padding-bottom: 0;
+    margin-bottom: 40px;
   }
 
   .skills-section .section-title {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    font-size: 1rem;
+    margin-bottom: 5px;
   }
-  .skills-section{
-    margin-bottom: 80px;
+
+  .toggle-skills {
+    display: inline-block;
+    margin: 15px auto;
+    padding: 8px 10px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .skills-scroll-wrapper {
+    max-height: 120px; /* adjust based on design */
+    overflow-y: auto;
+    margin-bottom: 40px;
+    padding: 6px; /* optional for scrollbar spacing */
+  }
+
+  /* Optional: customize scrollbar look */
+  .skills-scroll-wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .skills-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.3);
+    border-radius: 3px;
+  }
+
+  .skills-list.hidden {
+    display: none;
   }
 
   .skills-list {
-    margin-bottom: 50px;
+    gap: 12px;
+    margin-bottom: 40px;
   }
+
   .skill-badge {
-    width: 40px;
-    height: 40px;
-    font-size: 0.8rem;
-    padding: 5px;
+    width: 50px;
+    height: 50px;
+    font-size: 0.75rem;
+    padding: 4px;
   }
 
   .skill-badge svg {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .skill-label {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 
   .skill-category {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
   }
 
   .project-grid {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .project-item {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .scroll-arrow-portfolio {
+    display: none; /* Optional: remove on very small screens */
   }
 }
+

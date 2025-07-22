@@ -38,7 +38,8 @@ const projects = [
   }
 ];
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 
 function Portfolio() {
   useEffect(() => {
@@ -68,6 +69,12 @@ function Portfolio() {
     };
   }, []);
 
+  const [showSkills, setShowSkills] = useState(true);
+
+  const toggleSkills = () => {
+    setShowSkills(!showSkills);
+  };
+
   return (
     <div className="portfolio-container">
       <h2 className="section-title">PROJECTS</h2>
@@ -89,90 +96,96 @@ function Portfolio() {
 
       {/* Technical Skills Section */}
         <section className="skills-section">
-          <h3 className="section-title">Technical Skills</h3>
+          {/* <h3 className="section-title">Technical Skills</h3> */}
+          <button className="toggle-skills" onClick={toggleSkills}>
+            {showSkills ? 'Hide Skills' : 'Show Technical Skills'}
+          </button>
+          {showSkills && (
+            <div className="skills-scroll-wrapper">
+              <div id="skills-container" className={`skills-list ${!showSkills ? 'hidden' : ''}`}>
+                <div className="skill-badge frontend">
+                  <span className="skill-category">Frontend</span>
+                  <FaHtml5 size={40} />
+                  <span className="skill-label">HTML</span>
+                </div>
+                <div className="skill-badge frontend">
+                  <span className="skill-category">Frontend</span>
+                  <FaCss3Alt size={40} />
+                  <span className="skill-label">CSS</span>
+                </div>
+                <div className="skill-badge frontend">
+                  <span className="skill-category">Frontend</span>
+                  <FaJs size={40} />
+                  <span className="skill-label">JavaScript</span>
+                </div>
+                <div className="skill-badge frontend">
+                  <span className="skill-category">Frontend</span>
+                  <FaReact size={40} />
+                  <span className="skill-label">React</span>
+                </div>
+                <div className="skill-badge frontend">
+                  <span className="skill-category">Frontend</span>
+                  <SiRedux size={40} />
+                  <span className="skill-label">Redux</span>
+                </div>
 
-          <div className="skills-list">
-            <div className="skill-badge frontend">
-              <span className="skill-category">Frontend</span>
-              <FaHtml5 size={40} />
-              <span className="skill-label">HTML</span>
-            </div>
-            <div className="skill-badge frontend">
-              <span className="skill-category">Frontend</span>
-              <FaCss3Alt size={40} />
-              <span className="skill-label">CSS</span>
-            </div>
-            <div className="skill-badge frontend">
-              <span className="skill-category">Frontend</span>
-              <FaJs size={40} />
-              <span className="skill-label">JavaScript</span>
-            </div>
-            <div className="skill-badge frontend">
-              <span className="skill-category">Frontend</span>
-              <FaReact size={40} />
-              <span className="skill-label">React</span>
-            </div>
-            <div className="skill-badge frontend">
-              <span className="skill-category">Frontend</span>
-              <SiRedux size={40} />
-              <span className="skill-label">Redux</span>
-            </div>
+                <div className="skill-badge backend">
+                  <span className="skill-category">Backend</span>
+                  <FaNode size={40} />
+                  <span className="skill-label">Node.js</span>
+                </div>
+                <div className="skill-badge backend">
+                  <span className="skill-category">Backend</span>
+                  <SiExpress size={40} />
+                  <span className="skill-label">Express</span>
+                </div>
+                <div className="skill-badge backend">
+                  <span className="skill-category">Backend</span>
+                  <FaExchangeAlt size={32} />
+                  <span className="skill-label">RESTful APIs</span>
+                </div>
+                <div className="skill-badge backend">
+                  <span className="skill-category">Backend</span>
+                  <SiGraphql size={40} />
+                  <span className="skill-label">GraphQL</span>
+                </div>
 
-            <div className="skill-badge backend">
-              <span className="skill-category">Backend</span>
-              <FaNode size={40} />
-              <span className="skill-label">Node.js</span>
-            </div>
-            <div className="skill-badge backend">
-              <span className="skill-category">Backend</span>
-              <SiExpress size={40} />
-              <span className="skill-label">Express</span>
-            </div>
-            <div className="skill-badge backend">
-              <span className="skill-category">Backend</span>
-              <FaExchangeAlt size={32} />
-              <span className="skill-label">RESTful APIs</span>
-            </div>
-            <div className="skill-badge backend">
-              <span className="skill-category">Backend</span>
-              <SiGraphql size={40} />
-              <span className="skill-label">GraphQL</span>
-            </div>
+                <div className="skill-badge databases">
+                  <span className="skill-category">Database</span>
+                  <SiMysql size={40} />
+                  <span className="skill-label">MySQL</span>
+                </div>
+                <div className="skill-badge databases">
+                  <span className="skill-category">Database</span>
+                  <SiMongodb size={40} />
+                  <span className="skill-label">MongoDB</span>
+                </div>
 
-            <div className="skill-badge databases">
-              <span className="skill-category">Database</span>
-              <SiMysql size={40} />
-              <span className="skill-label">MySQL</span>
-            </div>
-            <div className="skill-badge databases">
-              <span className="skill-category">Database</span>
-              <SiMongodb size={40} />
-              <span className="skill-label">MongoDB</span>
-            </div>
+                <div className="skill-badge devops">
+                  <span className="skill-category">DevOps</span>
+                  <FaGithub size={40} />
+                  <span className="skill-label">GitHub</span>
+                </div>
 
-            <div className="skill-badge devops">
-              <span className="skill-category">DevOps</span>
-              <FaGithub size={40} />
-              <span className="skill-label">GitHub</span>
-            </div>
+                <div className="skill-badge security">
+                  <span className="skill-category">Security</span>
+                  <FaLock size={40} />
+                  <span className="skill-label">OAuth</span>
+                </div>
+                <div className="skill-badge security">
+                  <span className="skill-category">Security</span>
+                  <FaShieldAlt size={40} />
+                  <span className="skill-label">JWT</span>
+                </div>
 
-            <div className="skill-badge security">
-              <span className="skill-category">Security</span>
-              <FaLock size={40} />
-              <span className="skill-label">OAuth</span>
+                <div className="skill-badge testing">
+                  <span className="skill-category">Testing</span>
+                  <SiJest size={40} />
+                  <span className="skill-label">Jest</span>
+                </div>
+              </div>  
             </div>
-            <div className="skill-badge security">
-              <span className="skill-category">Security</span>
-              <FaShieldAlt size={40} />
-              <span className="skill-label">JWT</span>
-            </div>
-
-            <div className="skill-badge testing">
-              <span className="skill-category">Testing</span>
-              <SiJest size={40} />
-              <span className="skill-label">Jest</span>
-            </div>
-          </div>
+          )}
 
 
 

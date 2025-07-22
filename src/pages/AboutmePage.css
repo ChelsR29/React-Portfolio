@@ -178,7 +178,6 @@ body.dark-mode .scroll-arrow-about {
 
 
 /* Make bubbles float out more on larger screens */
-/* @media (min-width: 768px) {
   .hover-interests span {
     position: absolute;
   }
@@ -192,11 +191,11 @@ body.dark-mode .scroll-arrow-about {
   .hover-interests span:nth-child(7) { top: 60%; left: 20%; transform: translate(-50%, -50%); }
   .hover-interests span:nth-child(8) { top: 15%; left: 30%; transform: translate(-50%, -50%); }
   .hover-interests span:nth-child(9) { top: 85%; left: 70%; transform: translate(-50%, -50%); }
-} */
+
 
 @media (max-width: 480px) {
   .aboutme-container {
-    padding: 80px 50px 40px;
+    padding: 70px 50px 40px;
   }
   .profile-wrapper {
     position: relative;
@@ -224,6 +223,9 @@ body.dark-mode .scroll-arrow-about {
   .interest-bubble:nth-child(7) { top: -5%; left: 60%; }
   .interest-bubble:nth-child(8) { top: 65px; left: -12%; }
   .interest-bubble:nth-child(9) { top: 77%; left: 65%; }
+
+  .hover-interests p {  transform: translate(0%, 130%); }
+
 
   .indented-paragraph.paragraph-below-image {
     margin-top: 75px;
