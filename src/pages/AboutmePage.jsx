@@ -58,10 +58,10 @@ function AboutmePage() {
           </div>
 
           <p className="indented-paragraph paragraph-below-image">
-            Hi there! I hold a certificate from Rutgers Coding Bootcamp and a Master's in Forensic Psychology, 
-            both reflecting my passion for helping others. I am skilled in React and the MERN stack, 
-            which allows me to build dynamic, responsive web applications that focus on user experience 
-            and functionality.
+            Hi there! I'm a full-stack developer who has worked with technologies such as React, JavaScript, 
+            Node.js, and MongoDB to create responsive, user-friendly applications. With a background in psychology,
+            I have a strong understanding of human behavior that helps me create applications
+            with thoughtful and intuitive experiences.
           </p>
         </div>
       </article>

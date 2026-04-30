@@ -19,16 +19,16 @@ const projects = [
     title: 'Inkspire Studio',
     description: 'A modern tattoo studio portfolio and booking site.',
     deployLink: 'https://inkspire-studio.netlify.app/',
-    repoLink: 'https://github.com/ChelsR29/inkspire-studio',
+    repoLink: 'https://github.com/ChelsR29/inkspire-tattoo-site',
     image: Project3,
     techStack: ['React', 'Tailwind CSS', 'Google Sheets Integration'],
   },
   {
     title: 'DJ Eclipse Event Page',
     description: 'A responsive, modern landing page built for a live DJ event.',
-    deployLink: 'https://dj-eclipse-event.netlify.app/', // replace with your actual deployed link
-    repoLink: 'https://github.com/ChelsR29/Event-Landing-DJParty', // replace with your actual repo link
-    image: Project4, // update this import with your actual image variable
+    deployLink: 'https://dj-eclipse-event.netlify.app/', 
+    repoLink: 'https://github.com/ChelsR29/Event-Landing-DJParty', 
+    image: Project4, 
     techStack: ['HTML', 'CSS', 'JavaScript', 'Google Sheets Integration'],
   },
   {
@@ -126,7 +126,6 @@ function Portfolio() {
     touchStartX.current = null;
   };
 
-  // NEW: Channel guide state (replaces skills-section)
   const [showGuide, setShowGuide] = useState(false);
 
   return (
@@ -192,7 +191,6 @@ function Portfolio() {
             </button>
           </div>
 
-          {/* === NEW: Channel Guide Overlay === */}
           {showGuide && (
             <div className="channel-guide" role="dialog" aria-label="Skill channel guide">
               <div className="channel-header">
