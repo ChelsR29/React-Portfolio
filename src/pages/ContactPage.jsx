@@ -14,6 +14,19 @@ function ContactPage() {
   const [responseMessage, setResponseMessage] = useState('');
   const [fadeOut, setFadeOut] = useState(false); // New state for fading out
 
+  const showMessage = (message) => {
+    setResponseMessage(message);
+    setFadeOut(false);
+
+    setTimeout(() => {
+      setFadeOut(true);
+
+      setTimeout(() => {
+        setResponseMessage('');
+      }, 1000);
+    }, 3000);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,73 +54,52 @@ function ContactPage() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Check if any fields are empty
+
     if (!formData.name || !formData.email || !formData.message) {
-      setResponseMessage('Please fill in all fields before sending.');
-      setFadeOut(false); // Ensure message is shown immediately
-      setTimeout(() => {
-        setFadeOut(true); // Start fade-out after 3 seconds
-        setTimeout(() => {
-          setResponseMessage(''); // Remove message after fade-out
-        }, 1000); // Match the fade-out duration in CSS
-      }, 3000); // Display message for 3 seconds
-      return; // Stop form submission
+      showMessage('Please fill in all fields before sending.');
+      return;
     }
-  
-    // Validate the email format
+
     if (!isValidEmail(formData.email)) {
-      setResponseMessage('Please enter a valid email address.');
-      setFadeOut(false); // Ensure message is shown immediately
-      setTimeout(() => {
-        setFadeOut(true); // Start fade-out after 3 seconds
-        setTimeout(() => {
-          setResponseMessage(''); // Remove message after fade-out
-        }, 1000); // Match the fade-out duration in CSS
-      }, 3000); // Display message for 3 seconds
-      return; // Stop form submission
+      showMessage('Please enter a valid email address.');
+      return;
     }
-  
+
     setIsSubmitting(true);
-  
+
     try {
-      const response = await fetch('https://chelsearamdat-portfolio-2bb4cb1364f1.herokuapp.com/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
-  
+      const response = await fetch(
+        'https://chelsearamdat-portfolio-2bb4cb1364f1.herokuapp.com/send-email',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
+        }
+      );
+
       if (response.ok) {
-        setResponseMessage('Your message was sent successfully!');
+        showMessage('Your message was sent successfully!');
+
         setFormData({
           name: '',
           email: '',
           message: '',
         });
       } else {
-        setResponseMessage('Failed to send your message. Please try again.');
+        showMessage('Failed to send your message. Please try again.');
       }
     } catch (error) {
-      setResponseMessage('An error occurred. Please try again later.');
+      showMessage('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
-  
-    // Set fadeOut to false when showing the message, and then start fading out
-    setFadeOut(false);
-    setTimeout(() => {
-      setFadeOut(true); // Start fade-out after 3 seconds
-      setTimeout(() => {
-        setResponseMessage(''); // Remove message after fade-out
-      }, 1000); // Match the fade-out duration in CSS
-    }, 3000); // Display message for 3 seconds
-  
-    setIsSubmitting(false);
-  };   
+  }; 
 
   return (
     <div className="contact-section-container">
