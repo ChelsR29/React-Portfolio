@@ -2,7 +2,7 @@
 .aboutme-container {
   margin: 0 auto;
   padding: 20px;
-  padding: 50px 50px 40px;
+  padding: 30px 50px 40px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -139,7 +139,7 @@ body.dark-mode .interest-bubble p {
   color: #333;
   border-radius: 12px;
   max-width: 700px;
-  margin: 30px auto;
+  margin-top: 30px;
   text-align: justify;
   letter-spacing: 0.8px;
   word-spacing: -0.8px;
