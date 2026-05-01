@@ -10,7 +10,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, svg {
 /* ==== Container ==== */
 .portfolio-container {
   margin: 0 auto;
-  padding: 50px 94px 40px;
+  padding: 30px 94px 40px;
   position: relative;
 }
 
@@ -408,7 +408,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, svg {
   left: 50%; 
   transform: translateX(-50%); 
   font-size: 1.75rem; 
-  cursor: pointer; 
+  cursor: pointer;
+  color: inherit;
+  overflow: hidden; 
 }
 
 /* Keyframes */
